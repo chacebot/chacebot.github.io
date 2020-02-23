@@ -241,7 +241,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
-  jekyll-theme-cayman
+  jekyll-theme-merlot
 
 BUNDLED WITH
    2.1.4

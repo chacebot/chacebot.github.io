@@ -1,4 +1,8 @@
-theme: jekyll-theme-cayman
+title: Chace Medeiros
+description: A tech blog about my adventures in programming and robotics!
+
+
+theme: jekyll-theme-merlot
 
 collections:
   authors:

@@ -6,7 +6,7 @@ git_source(:github) {|repo_name| "https://github.com/chacebot/chacebot.github.io
 
 # gem "rails"
 
-gem "jekyll-theme-cayman"
+gem "jekyll-theme-merlot"
 
 gem "github-pages", group: :jekyll_plugins
 
