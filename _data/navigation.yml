@@ -3,6 +3,9 @@
 - name: About
   link: /about.html
 - name: Blog
-  link: /blog.html
-- name: Staff
-  link: /staff.html
+  link: /topics.html
+- name: Resources
+  link: /resources.html
+- name: Restaurant Reccomendations
+  link: /restaurants.html
+

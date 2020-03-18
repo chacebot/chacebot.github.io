@@ -3,5 +3,4 @@ title: About
 ---
 # About page
 
-This page tells you a little bit about me.
-
+Here I talk about my blog and how it alligns with my personal goals!

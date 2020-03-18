@@ -1,0 +1,21 @@
+collections:
+  genres:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "genres"
+    values:
+      layout: "genre"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+theme: jekyll-theme-slate
