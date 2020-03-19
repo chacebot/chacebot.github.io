@@ -3,4 +3,4 @@ title: Restaurant Reccomendations
 layout: default
 ---
 
-<h1>Restaurants</h1>
+# Restaurants

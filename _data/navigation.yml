@@ -2,8 +2,6 @@
   link: /
 - name: About
   link: /about.html
-- name: Blog
-  link: /topics.html
 - name: Resources
   link: /resources.html
 - name: Restaurant Reccomendations
