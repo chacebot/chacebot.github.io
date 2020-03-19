@@ -1,6 +1,5 @@
 ---
 title: Restaurant Reccomendations
-layout: default
+layout: post
 ---
 
-# Restaurants

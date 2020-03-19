@@ -1,8 +1,7 @@
 ---
 title: Resources
-layout: default
+layout: post
 ---
 
-# Resources
 
 
