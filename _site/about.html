@@ -4,17 +4,17 @@
 
 
 <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>About | Chace’s Sweet Tech Blog</title>
+<title>About | Chace’s Tech Blog</title>
 <meta name="generator" content="Jekyll v3.8.6" />
 <meta property="og:title" content="About" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Breadcrumbs of Chace’s Programming Adventure" />
-<meta property="og:description" content="Breadcrumbs of Chace’s Programming Adventure" />
+<meta name="description" content="Reflections on my Programming Adventure" />
+<meta property="og:description" content="Reflections on my Programming Adventure" />
 <link rel="canonical" href="http://localhost:4000/about.html" />
 <meta property="og:url" content="http://localhost:4000/about.html" />
-<meta property="og:site_name" content="Chace’s Sweet Tech Blog" />
+<meta property="og:site_name" content="Chace’s Tech Blog" />
 <script type="application/ld+json">
-{"description":"Breadcrumbs of Chace’s Programming Adventure","@type":"WebPage","url":"http://localhost:4000/about.html","headline":"About","@context":"https://schema.org"}</script>
+{"description":"Reflections on my Programming Adventure","@type":"WebPage","url":"http://localhost:4000/about.html","headline":"About","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,8 +25,8 @@
   <body>
 
     <header class="page-header" role="banner">
-        <h1 class="project-name">Chace's Sweet Tech Blog</h1>
-        <h2 class="project-tagline">Breadcrumbs of Chace's Programming Adventure</h2> 
+        <h1 class="project-name">Chace's Tech Blog</h1>
+        <h2 class="project-tagline">Reflections on my Programming Adventure</h2> 
       </header>
 
     <a id="skip-to-content" href="#content">Skip to the content.</a>
@@ -39,9 +39,7 @@
     
     <a href="/about.html" class="current"> About</a>
     
-    <a href="/resources.html" > Resources</a>
-    
-    <a href="/dining.html" > Dining</a>
+    <a href="/socials.html" > Contact</a>
     
   </nav>
 
@@ -49,7 +47,33 @@
 
 <h1>About</h1>
 <h2></h2>
-<!---![Branching](https://guides.github.com/activities/hello-world/branching.png) --->
-<p><img src="/assets/images/cabo_coast.jpg" alt="cabo_coast" /></p>
+<p>Welcome to my tech blog! I started this page to document my experiance learning about software. 3 years ago I moved to the Bay Area to design autonomus sidewalk deliver robots - specifically their actuation mechanisms as a fresh B.S. of Mehcanical Engineering graduate. After several design releases (~ 2 years ago) I became more interested in the logic behind my design’s motion rather than it’s physical presence. During this time I started paying more attention to the software operations within the companies I have worked for and started my own campaign to learn how to develop code myself.</p>
 
-<p>Here I talk about my blog and how it alligns with my personal goals!</p>
+<p>In addition to peeling through my employer’s Github repo’s I spent my free time learning through paid and unpaid programming classes, starting with python. I already had a little python experiance from an intro class I took in college. However that only covered some primitave data types and procedural programming. So at this point in time I knew enough to get my hands dirty with code but really started to sink my teeth in to more advanced conceptrs like object oriented programming (OOP), algorithims, and how to work with a variety of data sets.</p>
+
+<p>After abouut a year of online classes and small personal projects involving socket communication, raspberry pi, and arduino I started to look at how I could exercise my new skills at my day job in the robotics space. I attempted to develop several tools to enhance the joint actuation testing experiance through the use of python scripts talking to arduino microcontrollers over serial. However I ran into several fundamental issues with the nature of a dynamically scripted language such as python and my approach to streaming data over the serial bus. Around this time I was fortunate enough to speak with a work colleage with decades of experiance writing software at a popular phone manufacturing company and he convinced me that the language I needed to learn was C++.</p>
+
+<p>Learning from online tutorials and small coding exercises is great and all. But one thing I learned about myself in college is that I really need a complex project to apply my learnings too in order to really get my mental gears turning and force my understanding of the principles at hand. My ideas for projects within the near future are as follows:</p>
+
+<ul>
+  <li>Program the dexter industries GoPiGo robot to have basic movement functionality</li>
+  <li>Integrate the open source robotic operating system (ROS) into this rover</li>
+  <li>Develop a microcontroller to read PPM input from a RC controller and send data to a ROS app. through various communication protocols</li>
+  <li>Start creating my own ROS nodes through the implementation of a basic RC controller to drive the GoPiGo</li>
+  <li>Experiment with affortable point cloud generating depth sensor cameras like the intel real sense</li>
+  <li>Pipeline the point cloud data from the Intel real sense through the ROS network on a raspberry pi</li>
+  <li>Attempt to make a stab at implementing visual inertial odometry using the real sense on the GoPiGo</li>
+  <li>Attempt SLAM using the achitecture mentioned above to enable the GoPiGo robot to navigate around my apartment</li>
+</ul>
+
+<p>I plan to document my experiance with these projects throughout this blog to exercise my ability to communicate complex software tasks effectively. This blog serves as a tool for me to demonstrate other programming skills such as HTML, CSS, and Javascript.</p>
+
+<!--I also wanted to learn more about real time operating systems (RTOS) so I got started with the arduino platform around this time as well. With the burning desire to apply my begginer coding knowlege to a fun mechanical system with movement I decided to embark on a bare metal drone project that I built from scratch. This prohject failed misserably becuase I was juggling too many things at once, and drones can be quite dangerous. I was able to get the open source arduino software built and loaded and had a fully constructed drone. However I was very novice with motor controller units at the time (MCU's or ESC's) and did not know how to calibrate them since the cheap ones I purchased from amazon did not come with any documentation. On the maiden voyage of my drone, the motor controllers were not properly synched to the control loop running on the arduino and did not distrubute power evenly. Resulting in my first massive software related fail and the destruction of my drone (flew straight into a fence). 
+
+I also wanted to learn more about real time operating systems (RTOS) because that was what directly made my designs move in the first place. Luckily I have been fortunate enough to work directly with embedded systems engineers, iterating on the specifics of my mechanical design so they could map the geometry and speed appropriately. After picking my coworker's brain a bit I decided it would be best for me to start as gentle as possible and bought myself an arduino. After blinking a few lights and reading ping reponces from ultrasonic sensors I decided it was time for me to interface this with application level software like they have been doing on the projects at my work.
+
+My search for a project to integrate my desire to learn about RTOS and application level software simultaneously led me to the GoPiGo by dexter industries. It is a low cost differential drive robot that utlizes a Raspberry Pi and an arduino to control the two drive motors of the small robot. This is the platform for me to exercise my knowledge gained from taking online classes.
+
+
+
+-->
