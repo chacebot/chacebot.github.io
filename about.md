@@ -21,13 +21,3 @@ Learning from online tutorials and small coding exercises is great and all. But 
 I plan to document my experiance with these projects throughout this blog to exercise my ability to communicate software tasks effectively. This blog also serves as a tool for me to demonstrate other programming skills such as HTML, CSS, and Javascript. 
 
 
-
-<!--I also wanted to learn more about real time operating systems (RTOS) so I got started with the arduino platform around this time as well. With the burning desire to apply my begginer coding knowlege to a fun mechanical system with movement I decided to embark on a bare metal drone project that I built from scratch. This prohject failed misserably becuase I was juggling too many things at once, and drones can be quite dangerous. I was able to get the open source arduino software built and loaded and had a fully constructed drone. However I was very novice with motor controller units at the time (MCU's or ESC's) and did not know how to calibrate them since the cheap ones I purchased from amazon did not come with any documentation. On the maiden voyage of my drone, the motor controllers were not properly synched to the control loop running on the arduino and did not distrubute power evenly. Resulting in my first massive software related fail and the destruction of my drone (flew straight into a fence). 
-
-I also wanted to learn more about real time operating systems (RTOS) because that was what directly made my designs move in the first place. Luckily I have been fortunate enough to work directly with embedded systems engineers, iterating on the specifics of my mechanical design so they could map the geometry and speed appropriately. After picking my coworker's brain a bit I decided it would be best for me to start as gentle as possible and bought myself an arduino. After blinking a few lights and reading ping reponces from ultrasonic sensors I decided it was time for me to interface this with application level software like they have been doing on the projects at my work.
-
-My search for a project to integrate my desire to learn about RTOS and application level software simultaneously led me to the GoPiGo by dexter industries. It is a low cost differential drive robot that utlizes a Raspberry Pi and an arduino to control the two drive motors of the small robot. This is the platform for me to exercise my knowledge gained from taking online classes.
-
-
-
--->
