@@ -1,7 +1,0 @@
----
-title: Resources
-layout: post
----
-
-
-

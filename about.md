@@ -15,13 +15,10 @@ Learning from online tutorials and small coding exercises is great and all. But 
 * Integrate the open source robotic operating system (ROS) into this rover
 * Develop a microcontroller to read PPM input from a RC controller and send data to a ROS app. through various communication protocols
 * Start creating my own ROS nodes through the implementation of a basic RC controller to drive the GoPiGo
-* Experiment with affortable point cloud generating depth sensor cameras like the intel real sense
-* Pipeline the point cloud data from the Intel real sense through the ROS network on a raspberry pi
-* Attempt to make a stab at implementing visual inertial odometry using the real sense on the GoPiGo
-* Attempt SLAM using the achitecture mentioned above to enable the GoPiGo robot to navigate around my apartment
+* Execise proper coding techniques and practice usefull alogorithms to make myself a better programmer
+* Develop web apps
 
-
-I plan to document my experiance with these projects throughout this blog to exercise my ability to communicate complex software tasks effectively. This blog serves as a tool for me to demonstrate other programming skills such as HTML, CSS, and Javascript. 
+I plan to document my experiance with these projects throughout this blog to exercise my ability to communicate software tasks effectively. This blog also serves as a tool for me to demonstrate other programming skills such as HTML, CSS, and Javascript. 
 
 
 

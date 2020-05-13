@@ -1,4 +1,66 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-24T18:49:33-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chace’s Tech Blog</title><subtitle>Reflections on my Programming Adventure</subtitle><entry><title type="html">First Post! Udacity C++ Nanodegree</title><link href="http://localhost:4000/2020/04/01/Udacity.html" rel="alternate" type="text/html" title="First Post! Udacity C++ Nanodegree" /><published>2020-04-01T00:00:00-07:00</published><updated>2020-04-01T00:00:00-07:00</updated><id>http://localhost:4000/2020/04/01/Udacity</id><content type="html" xml:base="http://localhost:4000/2020/04/01/Udacity.html">&lt;p&gt;I graduated from the Udacity C++ Nanodegree program this week and I feel very good about what I accomplished over the past four months. Prior to this class my programming experience was mainly python and at the intermediate level. I had a firm grasp on computer science fundamentals and understood the main principles behind object oriented programming. However I still did not know much about the difference between dynamically scripted languages such as python and compiled languages like C++. I also did not know much about algorithms and how they are structured to produce useful output stemming from basic data input.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-12T21:37:16-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chace’s Tech Blog</title><entry><title type="html">My RC Controlled Robot - Chacebot. Powered by ROS, C++, and Raspberry PI</title><link href="http://localhost:4000/2020/05/11/Chacebot.html" rel="alternate" type="text/html" title="My RC Controlled Robot - Chacebot. Powered by ROS, C++, and Raspberry PI" /><published>2020-05-11T00:00:00-07:00</published><updated>2020-05-11T00:00:00-07:00</updated><id>http://localhost:4000/2020/05/11/Chacebot</id><content type="html" xml:base="http://localhost:4000/2020/05/11/Chacebot.html">&lt;p&gt;Chacebot has been my side project over the past month and it has been a very fun platform for me to demonstrate my C++ skills and get more hands on experience with the Robotic Operating System (ROS).&lt;/p&gt;
+
+&lt;!---&lt;Insert GIF of chacebot here&gt;---&gt;
+
+&lt;h3 id=&quot;why-did-i-choose-this-project&quot;&gt;Why did I choose this project?&lt;/h3&gt;
+
+&lt;p&gt;Throughout the past three years of my actuation design career, I have always met a large blocker once all my prototypes were assembled - lack of a control pipeline. My motivation behind this project is to produce a plugin that can easily integrate into a software stack containing motor drivers and directly start controlling motion in open loop. This plugin is a very valuable tool to add to my R and D toolbox so that I can learn from my designs faster and iterate even quicker to produce quality - well tested designs.&lt;/p&gt;
+
+&lt;h3 id=&quot;requirements-for-this-project&quot;&gt;Requirements for this project:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Must be cheap and simple hardware. Developing hardware is my day job, I wanted this project to fully focus on sharpening my software / firmware knowledge&lt;/li&gt;
+  &lt;li&gt;Must be implemented with ROS I know a lot of companies hate on ROS, however most of the custom middleware alternatives are not much different in terms of message publishing and subscription. Using a common middleware enables this plugin to be more adaptable to a range of projects.&lt;/li&gt;
+  &lt;li&gt;Must be written in C++. In addition to ROS, a lot of companies also dislike python for robotics and that is something I can get on board with when it comes to writing low level code. Although python is a simpler language to learn and adapt to a wide variety of problems due to the abundance of open source libraries, it is not efficient and safe. Therefore I feel it C++ is a great choice because of its robustness and efficiency.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Although this code is currently running on my raspberry pi powered robot, my future plans are to extend it to any type of robot using an operating system / CPU that can support ROS. With that said, here is an overview of my current setup.&lt;/p&gt;
+
+&lt;p&gt;The robot base, drivetrain, and motor drivers are sourced off the shelf from a company called Dexter industries. They make very affordable and fun robotics parts for education. This package without the raspberry pi included cost around $120 and the quality is not terrible. The robot is a holonomic differential drive robot base powered with two brushed DC motors with on axis encoders (on the motor axis). These motors have right angled gear heads with a reduction so the motor driver has to do a little math to get the velocity settings correct. Lastly this robot includes an arduino atmega microcontroller mounted on a custom PCBA running a 12V rail to power the motors. This microcontroller enables a raspberry pi 4 to easily communicate to the peripherals and drive wheels using SPI. Since this microcontroller comes flashed with it’s own firmware off the shelf, I will not discuss it because I did not code it.&lt;/p&gt;
+
+&lt;!---&lt;Here is a still of the dexter industries GoPiGo&gt;---&gt;
+
+&lt;p&gt;I splurged and purchased the dexter industries imu and ultrasonic sensor in addition to the raspberry pi camera as shown in the image above.&lt;/p&gt;
+
+&lt;p&gt;Also, what else is that on top? Well, that is the chacebot RC receiver wired up to a STM32F108 microcontroller that talks to the raspberry pi via usb. The RC receiver is paired with a specific 3 channel RC transmitter that is a very common item used to drive RC cars.&lt;/p&gt;
+
+&lt;!---&lt;photo of RC receiver&gt;---&gt;
+
+&lt;p&gt;I am currently using this device to provide ergonomic open loop control of the drivetrain of my robot (and can be easily modified for any mobile robot). Although this is a major part of this project, it is not the focus of the blog post and will leave you, the reader, something to look forward to in a future post! Let’s now take a look at the ROS software stack running on chacebot.&lt;/p&gt;
+
+&lt;h3 id=&quot;package-overview&quot;&gt;Package Overview&lt;/h3&gt;
+
+&lt;!---&lt;Block diagram flow chart of ROS stack (including stm outside the main box which is the raspberry pi)&gt;---&gt;
+
+&lt;p&gt;Currently the ROS stack is composed of Three main components.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Local Controller:  ROS node that continuously reads the serial buffer on a port specified in the source code and publishers it to a topic called /local_cmd&lt;/li&gt;
+  &lt;li&gt;Motion Allocator: The middleman that subscribes to the /local_cmd topic, processes that steering and drive input and maps that to the appropriate /left_wheel_speed and /right_wheel_speed topics it publishes&lt;/li&gt;
+  &lt;li&gt;GoPiGo3 Driver: A low level node written in python that subscribes to multiple topics and is composed of the libraries provided by dexter industries with their robot. I did not write this code because the libraries are in python and the purpose of this project was to further develop my C++ skills in addition to not writing hardware specific code.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here is the overview of the file structure of my ROS stack: It is composed of 4 packages, one for each of the nodes listed above and another for which is solely for custom messages that does not contain any scripts or source code:&lt;/p&gt;
+
+&lt;!---&lt;Insert top level view of the director structure&gt;---&gt;
+
+&lt;p&gt;Each package contains a CMakeLists.txt and a package.xml that are required by ROS to configure the package correctly for it to successfully be built. These files specify where to find includes, what executables to add, flags for message generation, etc.. We will dive into these specifics in future blog posts about each package.&lt;/p&gt;
+
+&lt;p&gt;Lastly, before we dive into the source code for this project in future posts, I would like to share the required dependencies so that anyone interested can try and build this project on their raspberry pi powered dexter robot. Here is a list in order of installation.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-install&quot;&gt;How to Install&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;A raspbian image with ROS kinetic preinstalled. I found a great one provided by a gentleman named Jack Pien from Hadabot, you can find the image at this &lt;a href=&quot;https://github.com/ROSbots/rosbots_setup_tools&quot;&gt;Medium Post&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The dexter industries driver libraries to communicate with the microcontroller provided with the GoPiGo. This main drivers are found &lt;a href=&quot;https://github.com/DexterInd/GoPiGo3&quot;&gt;here&lt;/a&gt; and if you are interested in using their sensor accessories, the added libraries to drive those components are found &lt;a href=&quot;https://github.com/DexterInd/DI_Sensors&quot;&gt;here&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;If using the raspbian image with ROS I mentioned above, you will also need to install ROS nav-msgs because they are required by the ROS GoPiGo3 driver used in this project. These nav-messages provide what is needed for odometry. This is a complex thing to do, luckily someone else ran into this issue when trying to use this driver on this specific ROS image and the instructions for successfully installing these message dependencies are found &lt;a href=&quot;https://github.com/ros-gopigo/gopigo3_node/issues/6&quot;&gt;here&lt;/a&gt;. Tldr, seems like the ros install on the raspbian image was non traditional and uses the ROS root directories (the standard /opt/ros location) and instead is installed in a subfolder of the home directory.&lt;/li&gt;
+  &lt;li&gt;Once the above is completed you are ready to clone this project’s workspace into your file system using
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;git clone https://github.com/chacebot/chacebot_ws
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Now that you have this project installed, please try running the individual packages to  get more practice with ros! The usage and details for each package will follow in future blog posts for each package. Thank you for reading this far, cheers!&lt;/p&gt;</content><author><name></name></author><summary type="html">Chacebot has been my side project over the past month and it has been a very fun platform for me to demonstrate my C++ skills and get more hands on experience with the Robotic Operating System (ROS).</summary></entry><entry><title type="html">First Post! Udacity C++ Nanodegree</title><link href="http://localhost:4000/2020/04/01/Udacity.html" rel="alternate" type="text/html" title="First Post! Udacity C++ Nanodegree" /><published>2020-04-01T00:00:00-07:00</published><updated>2020-04-01T00:00:00-07:00</updated><id>http://localhost:4000/2020/04/01/Udacity</id><content type="html" xml:base="http://localhost:4000/2020/04/01/Udacity.html">&lt;p&gt;I graduated from the Udacity C++ Nanodegree program this week and I feel very good about what I accomplished over the past four months. Prior to this class my programming experience was mainly python and at the intermediate level. I had a firm grasp on computer science fundamentals and understood the main principles behind object oriented programming. However I still did not know much about the difference between dynamically scripted languages such as python and compiled languages like C++. I also did not know much about algorithms and how they are structured to produce useful output stemming from basic data input.&lt;/p&gt;
 
 &lt;p&gt;This program required me to really put my existing programming knowledge (python) to work and extend it to the vast capabilities that C++ has to offer. The program was divided into 4 primary courses that seemed to fall into two categories of fundamentals and advanced topics.&lt;/p&gt;
 
