@@ -87,7 +87,7 @@
 
 <h3 id="package-overview">Package Overview</h3>
 
-<!---<Block diagram flow chart of ROS stack (including stm outside the main box which is the raspberry pi)>--->
+<p><img src="/assets/images/blog/may2020/cfd.png" alt="GPG Control Flow Chart" /></p>
 
 <p>Currently the ROS stack is composed of Three main components.</p>
 
@@ -99,7 +99,30 @@
 
 <p>Here is the overview of the file structure of my ROS stack: It is composed of 4 packages, one for each of the nodes listed above and another for which is solely for custom messages that does not contain any scripts or source code:</p>
 
-<!---<Insert top level view of the director structure>--->
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chacebot_ws/
+    |- README.md
+    |- src/                     Source Code
+        |- gopigo3_node/        GoPiGo3 Python ROS Driver
+        |   |- launch           Launch Files
+        |   |- msg              Custom Driver Messages use by the driver only
+        |   |- src              Source code aka python scripts in this context
+        |   |- srv              Custom services within the driver package
+        |   |- CMakeLists.txt
+        |   |- package.xml
+        |- local_controller/    C++ Pacakge for interpeting RC reciever
+        |   |- src
+        |   |- CMakeLists.txt
+        |   |- package.xml
+        |- motion_allocator/    C++ Package to make steering, drive to L,R wheel velocities
+        |   |- src
+        |   |- CMakeLists.txt
+        |   |- package.xml
+        |-  msg/                Package for custom messages used across multiple nodes
+        |   |- msg
+        |   |   |-RCLocal.msg   Custom Message for sending RC transmitter values
+        |   |- CMakeLists.txt
+        |   |- package.xml
+</code></pre></div></div>
 
 <p>Each package contains a CMakeLists.txt and a package.xml that are required by ROS to configure the package correctly for it to successfully be built. These files specify where to find includes, what executables to add, flags for message generation, etc.. We will dive into these specifics in future blog posts about each package.</p>
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-14T09:24:13-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chace’s Tech Blog</title><entry><title type="html">My RC Controlled Robot - Chacebot. Powered by ROS, C++, and Raspberry PI</title><link href="http://localhost:4000/2020/05/11/Chacebot.html" rel="alternate" type="text/html" title="My RC Controlled Robot - Chacebot. Powered by ROS, C++, and Raspberry PI" /><published>2020-05-11T00:00:00-07:00</published><updated>2020-05-11T00:00:00-07:00</updated><id>http://localhost:4000/2020/05/11/Chacebot</id><content type="html" xml:base="http://localhost:4000/2020/05/11/Chacebot.html">&lt;p&gt;Chacebot has been my side project over the past month and it has been a very fun platform for me to demonstrate my C++ skills and get more hands on experience with the Robotic Operating System (ROS).&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-14T18:36:38-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chace’s Tech Blog</title><entry><title type="html">My RC Controlled Robot - Chacebot. Powered by ROS, C++, and Raspberry PI</title><link href="http://localhost:4000/2020/05/11/Chacebot.html" rel="alternate" type="text/html" title="My RC Controlled Robot - Chacebot. Powered by ROS, C++, and Raspberry PI" /><published>2020-05-11T00:00:00-07:00</published><updated>2020-05-11T00:00:00-07:00</updated><id>http://localhost:4000/2020/05/11/Chacebot</id><content type="html" xml:base="http://localhost:4000/2020/05/11/Chacebot.html">&lt;p&gt;Chacebot has been my side project over the past month and it has been a very fun platform for me to demonstrate my C++ skills and get more hands on experience with the Robotic Operating System (ROS).&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/blog/may2020/chacebot_lightweight.gif&quot; alt=&quot;GoPiGo3 gif&quot; /&gt;&lt;/p&gt;
 
@@ -30,7 +30,7 @@
 
 &lt;h3 id=&quot;package-overview&quot;&gt;Package Overview&lt;/h3&gt;
 
-&lt;!---&lt;Block diagram flow chart of ROS stack (including stm outside the main box which is the raspberry pi)&gt;---&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/blog/may2020/cfd.png&quot; alt=&quot;GPG Control Flow Chart&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Currently the ROS stack is composed of Three main components.&lt;/p&gt;
 
@@ -42,7 +42,30 @@
 
 &lt;p&gt;Here is the overview of the file structure of my ROS stack: It is composed of 4 packages, one for each of the nodes listed above and another for which is solely for custom messages that does not contain any scripts or source code:&lt;/p&gt;
 
-&lt;!---&lt;Insert top level view of the director structure&gt;---&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chacebot_ws/
+    |- README.md
+    |- src/                     Source Code
+        |- gopigo3_node/        GoPiGo3 Python ROS Driver
+        |   |- launch           Launch Files
+        |   |- msg              Custom Driver Messages use by the driver only
+        |   |- src              Source code aka python scripts in this context
+        |   |- srv              Custom services within the driver package
+        |   |- CMakeLists.txt
+        |   |- package.xml
+        |- local_controller/    C++ Pacakge for interpeting RC reciever
+        |   |- src
+        |   |- CMakeLists.txt
+        |   |- package.xml
+        |- motion_allocator/    C++ Package to make steering, drive to L,R wheel velocities
+        |   |- src
+        |   |- CMakeLists.txt
+        |   |- package.xml
+        |-  msg/                Package for custom messages used across multiple nodes
+        |   |- msg
+        |   |   |-RCLocal.msg   Custom Message for sending RC transmitter values
+        |   |- CMakeLists.txt
+        |   |- package.xml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Each package contains a CMakeLists.txt and a package.xml that are required by ROS to configure the package correctly for it to successfully be built. These files specify where to find includes, what executables to add, flags for message generation, etc.. We will dive into these specifics in future blog posts about each package.&lt;/p&gt;
 
