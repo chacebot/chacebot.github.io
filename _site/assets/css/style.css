@@ -637,7 +637,8 @@ a {
   color: #fff;
   text-align: center;
   background-color: #159957;
-  background-image: linear-gradient(120deg, #155799, #159957); }
+  background-image: linear-gradient(120deg, #155799, #159957);
+  position: relative; }
   @media screen and (min-width: 64em) {
     .page-header {
       padding: 5rem 6rem; } }
@@ -836,8 +837,12 @@ a {
 .site-footer-credits {
   color: #819198; }
 
-.main_heading {
-  padding: 50px; }
+.main_heading h1, .main_heading h2, .main_heading p {
+  margin: 0px 0px 0px 50px; }
+.main_heading hr {
+  padding: 0px;
+  height: 4px;
+  background: gray; }
 
 .nav {
   text-align: center;
@@ -848,4 +853,5 @@ a {
 img {
   display: block;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  border-radius: 12px; }
