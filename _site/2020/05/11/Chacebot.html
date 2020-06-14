@@ -131,7 +131,7 @@
 <h3 id="how-to-install">How to Install</h3>
 
 <ol>
-  <li>A raspbian image with ROS kinetic preinstalled. I found a great one provided by a gentleman named Jack Pien from Hadabot, you can find the image at this <a href="https://github.com/ROSbots/rosbots_setup_tools">Medium Post</a></li>
+  <li>A raspbian image with ROS kinetic preinstalled. I found a great one provided by a gentleman named Jack Pien from Hadabot, you can find the image through this <a href="https://github.com/ROSbots/rosbots_setup_tools">Github Repo</a></li>
   <li>The dexter industries driver libraries to communicate with the microcontroller provided with the GoPiGo. This main drivers are found <a href="https://github.com/DexterInd/GoPiGo3">here</a> and if you are interested in using their sensor accessories, the added libraries to drive those components are found <a href="https://github.com/DexterInd/DI_Sensors">here</a>.</li>
   <li>If using the raspbian image with ROS I mentioned above, you will also need to install ROS nav-msgs because they are required by the ROS GoPiGo3 driver used in this project. These nav-messages provide what is needed for odometry. This is a complex thing to do, luckily someone else ran into this issue when trying to use this driver on this specific ROS image and the instructions for successfully installing these message dependencies are found <a href="https://github.com/ros-gopigo/gopigo3_node/issues/6">here</a>. Tldr, seems like the ros install on the raspbian image was non traditional and uses the ROS root directories (the standard /opt/ros location) and instead is installed in a subfolder of the home directory.</li>
   <li>Once the above is completed you are ready to clone this project’s workspace into your file system using

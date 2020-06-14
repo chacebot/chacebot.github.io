@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Code Walkthrough, FreeRTOS and libopencm3 on the Chacebot Microcontroller | Chace’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Code Walkthrough, FreeRTOS and libopencm3 on the Chacebot Microcontroller" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Chacebot uses an STM32F103C8T6 microcontroller to intrepret PWM signals from a three channel RC reciever and streams the values over the serial port to control the drivetrain of the robot. This post contains an overview of the hardware setup and explains the firmware I implemented to make this embedded system work efficently. The code I developed in this project is an extension from a chapter in Warren Gay’s book : Beginning STM32: Developing with FreeRTOS, libopencm3 and GCC, specifically Chapter 17 titled “PWM Input with Timer 4”." />
+<meta property="og:description" content="Chacebot uses an STM32F103C8T6 microcontroller to intrepret PWM signals from a three channel RC reciever and streams the values over the serial port to control the drivetrain of the robot. This post contains an overview of the hardware setup and explains the firmware I implemented to make this embedded system work efficently. The code I developed in this project is an extension from a chapter in Warren Gay’s book : Beginning STM32: Developing with FreeRTOS, libopencm3 and GCC, specifically Chapter 17 titled “PWM Input with Timer 4”." />
+<link rel="canonical" href="http://localhost:4000/2020/06/21/Firmware.html" />
+<meta property="og:url" content="http://localhost:4000/2020/06/21/Firmware.html" />
+<meta property="og:site_name" content="Chace’s Tech Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-21T00:00:00-07:00" />
+<script type="application/ld+json">
+{"description":"Chacebot uses an STM32F103C8T6 microcontroller to intrepret PWM signals from a three channel RC reciever and streams the values over the serial port to control the drivetrain of the robot. This post contains an overview of the hardware setup and explains the firmware I implemented to make this embedded system work efficently. The code I developed in this project is an extension from a chapter in Warren Gay’s book : Beginning STM32: Developing with FreeRTOS, libopencm3 and GCC, specifically Chapter 17 titled “PWM Input with Timer 4”.","@type":"BlogPosting","url":"http://localhost:4000/2020/06/21/Firmware.html","headline":"Code Walkthrough, FreeRTOS and libopencm3 on the Chacebot Microcontroller","dateModified":"2020-06-21T00:00:00-07:00","datePublished":"2020-06-21T00:00:00-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/06/21/Firmware.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+  </head>
+  <body>
+
+    <header class="page-header" role="banner">
+        <h1 class="project-name">Chace's Tech Blog</h1>
+        <h2 class="project-tagline">Reflections on my Programming Adventure</h2> 
+        <div class="nav">
+
+          <nav>
+    
+    <a href="/" class="nav"> Home</a>
+    
+    <a href="/about.html" class="nav"> About</a>
+    
+    <a href="/socials.html" class="nav"> Contact</a>
+    
+  </nav>
+
+
+    
+        </div>
+      </header>
+
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+    
+    <main id="content" class="main-content" role="main">
+
+
+
+<h2>Code Walkthrough, FreeRTOS and libopencm3 on the Chacebot Microcontroller</h2>
+<h3>21 Jun 2020</h3>
+<p>Chacebot uses an STM32F103C8T6 microcontroller to intrepret PWM signals from a three channel RC reciever and streams the values over the serial port to control the drivetrain of the robot. This post contains an overview of the hardware setup and explains the firmware I implemented to make this embedded system work efficently. The code I developed in this project is an extension from a chapter in Warren Gay’s book : <a href="https://www.amazon.com/Beginning-STM32-Developing-FreeRTOS-libopencm3/dp/1484236238">Beginning STM32: Developing with FreeRTOS, libopencm3 and GCC</a>, specifically Chapter 17 titled “PWM Input with Timer 4”.</p>
+
+<p>The reason why I purchased Warren’s book was so that I can learn more about embedded systems and implement this RC reciever interpreting functionality in a more elegant way than the lower hanging fruit alternative which was to use an Arduino. Using the arduino for this would have been very easy because the arduino platform has built in functions that allow you pick an analog input pin and will set up the relevant timers and scale the length of the pulse under the hood without having to write all of the code to do so. However this is not how this system would be deployed in industry because the Arduino platform is not scalable and it does not allow for multitasking. Everything in Arduino is synchronous meaning it only does one task at a time, therefore there is the possibility of missing input signals since it cannot monitor all RC input pins at the same time. This is where FreeRTOS comes in. Through Warren’s book I was able to learn how to implement premptive multitasking which I will just refer too as a “task”. This allows for me to set up modular routines or “jobs” that can be initatied and run at the discression of the microprocessor scheduler which is very efficient. Running multiple jobs this way does not always mean that they are done in parrallel, however it does enable asynchronous behavior.</p>
+
+<p><img src="/assets/images/blog/june2020/chacebot-stm32.jpg" alt="Chacebot RC Control Setup" /></p>
+
+<p>Above, the chacebot STM32 setup is shown. This includes the off the shelf RC transmitter and reciever combo ($30 from amazon) which is used for any typlical RC hobby application. The RC Reciever (little black box with an antenna) is mounted via VHB foam tape to a breadboard containing the STM32F103 microcontroller. The STM32 is wired to the RC reviever using jumper wires running Vcc (+5v), GND, and connections between channel 1, 2, 3 of the RC reviever to pins PB6, PA6, and PA0 respectivly. The pinout diagram for the STM32 board below indicates the physical location of these pins:</p>
+
+<p><img src="/assets/images/blog/june2020/STM32-Pinout.png" alt="STM32 Pinout" /></p>
+
+
+
+</main>
+</body>
+</html>
