@@ -33,18 +33,17 @@ title: Home
     </main>-->
     <div class="main_heading">
       {{ content }}
-
       <hr> </hr>
     </div>
     
-
+    <div class="post_list">
      <ul>
       {% for post in site.posts %}
-        <h2><a href="{{ post.url }}">{{post.date | date_to_string}}: {{post.title}}</a></h2>
-        <p>{{ post.excerpt }}</p>
+        <h3><a href="{{ post.url }}">{{post.date | date_to_string}}: {{post.title}}</a></h3>
+        <!-- <p>{{ post.excerpt }}</p> -->
       {% endfor %}
     </ul>
-
+  </div>
     
 
   </body>

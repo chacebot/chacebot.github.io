@@ -838,11 +838,16 @@ a {
   color: #819198; }
 
 .main_heading h1, .main_heading h2, .main_heading p {
-  margin: 0px 0px 0px 50px; }
+  width: 900px;
+  margin: auto; }
 .main_heading hr {
   padding: 0px;
   height: 4px;
   background: gray; }
+
+.post_list {
+  margin: auto;
+  width: 800px; }
 
 .nav {
   text-align: center;
