@@ -839,15 +839,17 @@ a {
 
 .main_heading h1, .main_heading h2, .main_heading p {
   width: 900px;
-  margin: auto; }
+  margin: auto;
+  min-width: 220px; }
 .main_heading hr {
   padding: 0px;
-  height: 4px;
+  height: 1px;
   background: gray; }
 
 .post_list {
   margin: auto;
-  width: 800px; }
+  width: 800px;
+  min-width: 220px; }
 
 .nav {
   text-align: center;
