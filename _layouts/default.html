@@ -7,45 +7,31 @@ title: Home
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
   <head>
-
-
-{% seo %}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#157878">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+  <link rel="stylesheet" href="/assets/css/style.css">
   </head>
+
+
   <body>
-    <a id="skip-to-content" href="#content">Skip to the content.</a>
-
-
     <header class="page-header" role="banner">
-      <h1 class="project-name">{{ site.title}}</h1>
-      <h2 class="project-tagline">{{site.tag_line}}</h2>
-      <div class="nav">
+        <h1 class="page-header">{{site.title}}</h1>
+        <h2 class="page-header">{{site.tag_line}}</h2> 
+        <div class="nav">
         {% include navigation.html %}
-      </div>
+        </div>
     </header>
 
-
-    <!--<main id="content" class="main-content" role="main">
-  
-    </main>-->
     <div class="main_heading">
       {{ content }}
-      <hr> </hr>
+      <!--<hr> </hr>-->
     </div>
     
     <div class="post_list">
      <ul>
       {% for post in site.posts %}
         <h3><a href="{{ post.url }}">{{post.date | date_to_string}}: {{post.title}}</a></h3>
-        <!-- <p>{{ post.excerpt }}</p> -->
       {% endfor %}
-    </ul>
-  </div>
-    
-
+      </ul>
+    </div>
   </body>
 
 

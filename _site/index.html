@@ -1,35 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-
-
-<!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Chace’s Tech Blog</title>
-<meta name="generator" content="Jekyll v3.8.6" />
-<meta property="og:title" content="Chace’s Tech Blog" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="One hell of a resource" />
-<meta property="og:description" content="One hell of a resource" />
-<link rel="canonical" href="http://localhost:4000/" />
-<meta property="og:url" content="http://localhost:4000/" />
-<meta property="og:site_name" content="Chace’s Tech Blog" />
-<script type="application/ld+json">
-{"headline":"Chace’s Tech Blog","description":"One hell of a resource","@type":"WebSite","url":"http://localhost:4000/","name":"Chace’s Tech Blog","@context":"https://schema.org"}</script>
-<!-- End Jekyll SEO tag -->
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#157878">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="/assets/css/style.css?v=">
+  <link rel="stylesheet" href="/assets/css/style.css">
   </head>
+
+
   <body>
-    <a id="skip-to-content" href="#content">Skip to the content.</a>
-
-
     <header class="page-header" role="banner">
-      <h1 class="project-name">Chace's Tech Blog</h1>
-      <h2 class="project-tagline">Reflections on my Programming Adventure</h2>
-      <div class="nav">
+        <h1 class="page-header">Chace's Tech Blog</h1>
+        <h2 class="page-header">Reflections on my Programming Adventure</h2> 
+        <div class="nav">
         <nav>
     
     <a href="/" class="nav"class="current"> Home</a>
@@ -41,176 +21,29 @@
   </nav>
 
 
-      </div>
+        </div>
     </header>
 
-
-    <!--<main id="content" class="main-content" role="main">
-  
-    </main>-->
     <div class="main_heading">
       <h1 id="welcome">Welcome!</h1>
 
 <p>Please visit the About section to learn more about me, this blog, and the posts I plan to make monthly. Feel free to reach out through any of my socials (in contact section).</p>
 
 
-      <hr> </hr>
+      <!--<hr> </hr>-->
     </div>
     
     <div class="post_list">
      <ul>
       
         <h3><a href="/2020/06/21/Firmware.html">21 Jun 2020: Code Walkthrough, Firmware running the Chacebot Microcontroller</a></h3>
-        <!-- <p><p>Chacebot uses an STM32F103C8T6 microcontroller to interpret PWM signals from a three channel RC receiver and streams the values over the serial port to control the drivetrain of the robot. This post contains an overview of the hardware setup and explains the firmware I implemented to make this embedded system work efficiently. The code I developed in this project is an extension from a chapter in Warren Gay’s book : <a href="https://www.amazon.com/Beginning-STM32-Developing-FreeRTOS-libopencm3/dp/1484236238">Beginning STM32: Developing with FreeRTOS, libopencm3 and GCC</a>, specifically Chapter 17 titled “PWM Input with Timer 4”.</p>
-
-<h3 id="background">Background</h3>
-
-<p>The reason why I purchased Warren’s book was so that I can learn more about embedded systems and implement this RC receiver interpreting functionality in a more elegant way than the lower hanging fruit alternative which was to use an Arduino. Using the arduino for this would have been very easy because the arduino platform has built in functions that allow you pick an analog input pin and will set up the relevant timers and scale the length of the pulse under the hood without having to write all of the code to do so. However this is not how this system would be deployed in industry because the Arduino platform is not scalable and it does not allow for multitasking. Everything in Arduino is synchronous meaning it only does one task at a time, therefore there is the possibility of missing input signals since it cannot monitor all RC input pins at the same time. This is where FreeRTOS comes in. Through Warren’s book I was able to learn how to implement preemptive multitasking which I will just refer to as a “task”. This allows for me to set up modular routines or “jobs” that can be initiated and run at the discretion of the microprocessor scheduler which is very efficient. Running multiple jobs this way does not always mean that they are done in parallel, however it does enable asynchronous behavior.</p>
-
-<p><img src="/assets/images/blog/june2020/chacebot-stm32.jpg" alt="Chacebot RC Control Setup" /></p>
-
-<p>Above, the chacebot STM32 setup is shown. This includes the off the shelf RC transmitter and reciever combo ($30 from amazon) which is used for any typical RC hobby application. The RC Receiver (little black box with an antenna) is mounted via VHB foam tape to a breadboard containing the STM32F103 microcontroller. The STM32 is wired to the RC receiver using jumper wires running Vcc (+5v), GND, and connections between channel 1, 2, 3 of the RC receiver to pins PB6, PA6, and PA0 respectively. The pinout diagram for the STM32 board below indicates the physical location of these pins:</p>
-
-<p><img src="/assets/images/blog/june2020/STM32-Pinout.png" alt="STM32 Pinout" /></p>
-
-<p>The code that follows in this post can be found in the <a href="https://github.com/chacebot/chacebot_firmware">Chacebot Firmware Github Repo</a> and can be built and used by following the instructions at <a href="https://github.com/ve3wwg/stm32f103c8t6">Warren Gay’s Tutorial Repo for the STM32</a>. The only project in my repo is the RC controller and it can be found in this directory:</p>
-
-<p>chacebot_firmware/
-       |- README.md
-       |- libopencm3
-       |- FreeRTOSv10.0.1
-       |- libwwg
-       |-rtos
-           |- chacebot_rc_reciever/        Project Source Code Directory
-           |   |- main.c                   Main file where all the magic happens</p>
-
-<h3 id="code">Code</h3>
-
-<p>Starting with a top down approach, we will first look at the main function of the code and then dig into the details of what it contains. Here is what the main function looks like:</p>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
- 
- <span class="n">rcc_clock_setup_in_hse_8mhz_out_72mhz</span><span class="p">();</span>
- 
- <span class="n">rcc_periph_clock_enable</span><span class="p">(</span><span class="n">RCC_GPIOC</span><span class="p">);</span>
- <span class="n">gpio_set_mode</span><span class="p">(</span><span class="n">GPIOC</span><span class="p">,</span> <span class="n">GPIO_MODE_OUTPUT_2_MHZ</span><span class="p">,</span> <span class="n">GPIO_CNF_OUTPUT_PUSHPULL</span><span class="p">,</span>
-               <span class="n">GPIO13</span><span class="p">);</span>
- <span class="n">gpio_clear</span><span class="p">(</span><span class="n">GPIOC</span><span class="p">,</span> <span class="n">GPIO13</span><span class="p">);</span> <span class="c1">// LED off</span>
- 
- <span class="n">usb_start</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
- <span class="n">std_set_device</span><span class="p">(</span><span class="n">mcu_usb</span><span class="p">);</span> <span class="c1">// Use USB for std I/O</span>
- 
- <span class="n">xTaskCreate</span><span class="p">(</span><span class="n">task1</span><span class="p">,</span> <span class="s">"steering"</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
- <span class="n">xTaskCreate</span><span class="p">(</span><span class="n">task2</span><span class="p">,</span> <span class="s">"drive"</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
- <span class="n">xTaskCreate</span><span class="p">(</span><span class="n">task3</span><span class="p">,</span> <span class="s">"status"</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
- <span class="n">xTaskCreate</span><span class="p">(</span><span class="n">task4</span><span class="p">,</span> <span class="s">"send"</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
- <span class="n">vTaskStartScheduler</span><span class="p">();</span>
- <span class="k">for</span> <span class="p">(;;)</span>
-   <span class="p">;</span>
- <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>First we set up the main system clock speed of 72 MHz on the STM32 and then set up the built in LED. Next the usb interface is initialized. This interface is provided by Warren Gay which is very easy to use and allows us to send data from the board to a computer over the serial port. Finally there is the part where my code comes in (with inspiration from Mr. Gay). I start 4 tasks using the FreeRTOS preemptive scheduling facilities by calling the function “xTaskCreate(task code, task name, NULL, task priority, NULL). The two NULL pointers are to use the function without pvParameter and pxCreatedTask functionality which are optional. The first three tasks are pretty much identical and are used to set up and execute the timers to monitor PWM signals on three specific pins using their own timers. The last task is used to package up the pwm values stored in a stack variable and send them over the serial port. Lastly this main function calls “vTaskStartScheduler()” which initiates the tasks to run on the STM32. Each task has their own infinite loop just like the one seen at the end of this main function so that the program continues to interpret PWM data and stream it over the serial port forever. The reason for the redundant infinite loop in the main function allows for the program to never exit. Now lets take a look under the hood of one of the PWM timer tasks:</p>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="kt">void</span> <span class="nf">task1</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">args</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">unused</span><span class="p">)))</span>
-<span class="p">{</span> <span class="c1">//Steering Task</span>
- 
- <span class="n">rcc_periph_clock_enable</span><span class="p">(</span><span class="n">RCC_TIM4</span><span class="p">);</span> <span class="c1">// Need TIM4 clock</span>
- 
- <span class="c1">// PB6 == TIM4.CH1</span>
- <span class="n">rcc_periph_clock_enable</span><span class="p">(</span><span class="n">RCC_GPIOB</span><span class="p">);</span>         <span class="c1">// Need GPIOB clock</span>
- <span class="n">gpio_set_mode</span><span class="p">(</span><span class="n">GPIOB</span><span class="p">,</span> <span class="n">GPIO_MODE_INPUT</span><span class="p">,</span>       <span class="c1">// Input</span>
-               <span class="n">GPIO_CNF_INPUT_FLOAT</span><span class="p">,</span> <span class="n">GPIO6</span><span class="p">);</span> <span class="c1">// PB6=TIM4.CH1</span>
- 
- <span class="c1">// TIM4:</span>
- <span class="n">timer_disable_counter</span><span class="p">(</span><span class="n">TIM4</span><span class="p">);</span>
- <span class="n">rcc_periph_reset_pulse</span><span class="p">(</span><span class="n">RST_TIM4</span><span class="p">);</span>
- <span class="n">nvic_set_priority</span><span class="p">(</span><span class="n">NVIC_DMA1_CHANNEL3_IRQ</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
- <span class="n">nvic_enable_irq</span><span class="p">(</span><span class="n">NVIC_TIM4_IRQ</span><span class="p">);</span>
- <span class="n">timer_set_mode</span><span class="p">(</span><span class="n">TIM4</span><span class="p">,</span> <span class="n">TIM_CR1_CKD_CK_INT</span><span class="p">,</span> <span class="n">TIM_CR1_CMS_EDGE</span><span class="p">,</span> <span class="n">TIM_CR1_DIR_UP</span><span class="p">);</span>
- <span class="n">timer_set_prescaler</span><span class="p">(</span><span class="n">TIM4</span><span class="p">,</span> <span class="mi">72</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
- 
- <span class="n">timer_ic_set_input</span><span class="p">(</span><span class="n">TIM4</span><span class="p">,</span> <span class="n">TIM_IC2</span><span class="p">,</span> <span class="n">TIM_IC_IN_TI1</span><span class="p">);</span>
- <span class="n">timer_ic_set_filter</span><span class="p">(</span><span class="n">TIM4</span><span class="p">,</span> <span class="n">TIM_IC_IN_TI1</span><span class="p">,</span> <span class="n">TIM_IC_CK_INT_N_2</span><span class="p">);</span>
- 
- <span class="n">timer_slave_set_mode</span><span class="p">(</span><span class="n">TIM4</span><span class="p">,</span> <span class="n">TIM_SMCR_SMS_RM</span><span class="p">);</span>
- <span class="n">timer_slave_set_trigger</span><span class="p">(</span><span class="n">TIM4</span><span class="p">,</span> <span class="n">TIM_SMCR_TS_TI1FP1</span><span class="p">);</span>
- <span class="n">TIM_CCER</span><span class="p">(</span><span class="n">TIM4</span><span class="p">)</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">(</span><span class="n">TIM_CCER_CC2P</span> <span class="o">|</span> <span class="n">TIM_CCER_CC2E</span><span class="p">);</span>
- <span class="n">TIM_CCER</span><span class="p">(</span><span class="n">TIM4</span><span class="p">)</span> <span class="o">|=</span> <span class="n">TIM_CCER_CC2P</span> <span class="o">|</span> <span class="n">TIM_CCER_CC2E</span><span class="p">;</span>
- <span class="n">timer_ic_enable</span><span class="p">(</span><span class="n">TIM4</span><span class="p">,</span> <span class="n">TIM_IC2</span><span class="p">);</span>
- <span class="n">timer_enable_irq</span><span class="p">(</span><span class="n">TIM4</span><span class="p">,</span> <span class="n">TIM_DIER_CC2IE</span><span class="p">);</span>
- <span class="n">timer_enable_counter</span><span class="p">(</span><span class="n">TIM4</span><span class="p">);</span>
- 
- <span class="k">for</span> <span class="p">(;;)</span>
- <span class="p">{</span>
-   <span class="n">vTaskDelay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
- <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>There is a lot to swallow here but it is all mainly initializer stuff to support the timer and to configure how it scales the output to return the results we want. The STM32 has 4 general purpose timers and we are using three of them, one for each channel of the RC receiver. Channel one (steering) is wired to the timer in the example shown above which is timer 4 on pin PB6. Channel two (drive) and channel three (safety switch) are wired to timer 3 on pin PA6 and timer 2 on pin PA0 respectively. The “B” in PB6 stands for peripheral bus “B” which needs to be activated before any of the GPIO functionality on that bus is used. This is done with the call to rcc_periph_clock_enable(RCC_GPIOB) which starts the clock for that bus. You’ll also notice that this same method was called above it but with the argument of “RCC_TIM4” which sets another clock just for the timer. Embedded systems are super specific and if everything is not configured properly then nothing will work. It is also very tedious since there is such granularity to what has to be configured. After the clocks are enabled then the specific pin GPIO6 on the GPIOB bus is initialized as an input pin to be used by the timer.</p>
-
-<p>After everything is initialized for this channel, the timer is further configured to start counting when the PWM signal rises and counts until it falls again. This length is the “Pulse Width” in Pulse Width Modulation (PWM). The timer counts in units of the system clock intervals and then needs to be converted to usable time (ms) which is done by calling timer_set_prescaler(TIM4, 72 - 1). The rest of the function calls are used to further configure how the timer handles noise with a filter and configures the interrupt service routine functionality that works kind of like a callback function to store the data in a stack variable. Lastly this task, just like all the others, has an infinite loop so that it keeps timing the length of PWM pulses for as long as the STM32 is powered. Next we will look into the interrupt service routine and the variable it stores our valuable RC controller command data in:</p>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="k">volatile</span> <span class="kt">uint32_t</span> <span class="n">STEERING</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">DRIVE</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ENABLE</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
- 
-<span class="kt">void</span> <span class="nf">tim4_isr</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
- <span class="kt">uint32_t</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">TIM_SR</span><span class="p">(</span><span class="n">TIM4</span><span class="p">);</span>
- 
- <span class="k">if</span> <span class="p">(</span><span class="n">sr</span> <span class="o">&amp;</span> <span class="n">TIM_SR_CC2IF</span><span class="p">)</span>
- <span class="p">{</span>
-   <span class="n">STEERING</span> <span class="o">=</span> <span class="n">TIM_CCR2</span><span class="p">(</span><span class="n">TIM4</span><span class="p">);</span>
-   <span class="n">timer_clear_flag</span><span class="p">(</span><span class="n">TIM4</span><span class="p">,</span> <span class="n">TIM_SR_CC2IF</span><span class="p">);</span>
- <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>Starting from the top, three unsigned (positive only) 32 bit integers are declared to zero, one for each of the RC channels. Then the timer 4 interrupt service routine is defined as void because it never returns anything. Instead it is called through the timer tasks, stores the appropriate channel’s PWM signal data into the corresponding variable, and then clears the timer flag so that it can start timing again. This is pretty simple right? For each channel we have a task that runs infinitely that records the amount of time passed since the last voltage spike on the pin until the voltage drops again and then stores that value into a variable which we will then send over the serial port to a computer to be used modularly to provide input to any application. Let’s take a look at the final piece of the puzzle which is the task for sending this data over the serial port:</p>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="kt">void</span> <span class="nf">task4</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">args</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">unused</span><span class="p">)))</span>
-<span class="p">{</span> <span class="c1">//Sending Task</span>
- 
- <span class="n">gpio_set</span><span class="p">(</span><span class="n">GPIOC</span><span class="p">,</span> <span class="n">GPIO13</span><span class="p">);</span> <span class="c1">// LED on</span>
- 
- <span class="k">for</span> <span class="p">(;;)</span>
- <span class="p">{</span>
-   <span class="n">vTaskDelay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-   <span class="n">std_printf</span><span class="p">(</span><span class="s">"&lt;%u,%u,%u&gt;</span><span class="se">\r\n</span><span class="s">"</span><span class="p">,</span> <span class="p">(</span><span class="kt">unsigned</span><span class="p">)</span><span class="n">STEERING</span><span class="p">,</span> <span class="p">(</span><span class="kt">unsigned</span><span class="p">)</span><span class="n">DRIVE</span><span class="p">,</span>
-              <span class="p">(</span><span class="kt">unsigned</span><span class="p">)</span><span class="n">ENABLE</span><span class="p">);</span>
-   <span class="k">if</span> <span class="p">(</span><span class="n">ENABLE</span> <span class="o">&gt;</span> <span class="mi">1500</span><span class="p">)</span>
-     <span class="n">gpio_clear</span><span class="p">(</span><span class="n">GPIOC</span><span class="p">,</span> <span class="n">GPIO13</span><span class="p">);</span> <span class="c1">// LED on</span>
- 
-   <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">ENABLE</span> <span class="o">&lt;</span> <span class="mi">1500</span><span class="p">)</span>
-     <span class="n">gpio_set</span><span class="p">(</span><span class="n">GPIOC</span><span class="p">,</span> <span class="n">GPIO13</span><span class="p">);</span>
- <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>When task4 is kicked off in the main function, the task initializes the board built in LED to shine by setting the pin to high with “gpio_set(GPIOC, GPIO13)”. Then the task enters it’s infinite loop that continuously writes to the serial buffer with the &lt;STEERING,DRIVE,ENABLE&gt; format. This print call includes the special “\r” and “\n” characters to indicate the end of the message and to write to a new line the next cycle. Lastly there is added functionality here that controls the LED indicator depending on the status of the ENABLE status channel value. If ENABLE (button clicked on controller) is above 1500 (ms) it will turn the LED on and if under 1500 will turn it off.</p>
-
-<p>Thank you for reading and please let me know if you have any suggestions to how I could make improvements!</p>
-
-<p>-Chace</p>
-</p> -->
       
         <h3><a href="/2020/05/11/Chacebot.html">11 May 2020: My RC Controlled Robot - Chacebot, Powered by ROS and C++</a></h3>
-        <!-- <p><p>Chacebot has been my side project over the past month and it has been a very fun platform for me to demonstrate my C++ skills and get more hands on experience with the Robotic Operating System (ROS).</p>
-
-</p> -->
       
         <h3><a href="/2020/04/01/Udacity.html">01 Apr 2020: First Post! Udacity C++ Nanodegree</a></h3>
-        <!-- <p><p>I graduated from the Udacity C++ Nanodegree program this week and I feel very good about what I accomplished over the past four months. Prior to this class my programming experience was mainly python and at the intermediate level. I had a firm grasp on computer science fundamentals and understood the main principles behind object oriented programming. However I still did not know much about the difference between dynamically scripted languages such as python and compiled languages like C++. I also did not know much about algorithms and how they are structured to produce useful output stemming from basic data input.</p>
-
-</p> -->
       
-    </ul>
-  </div>
-    
-
+      </ul>
+    </div>
   </body>
 
 
