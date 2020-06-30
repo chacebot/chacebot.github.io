@@ -2,13 +2,41 @@
 
 ---
 
-//@import "main";
 
 .page-header {
-    text-align:center;
-    background: maroon;
-    color: white;
+
+    h1 { 
+    font-size:  42px; 
+    }
+
+    h2 {
+    font-size: 26px;
+    }
+
+header {
+    text-align: center;
+    background:  url("/assets/images/cabo_coast.jpg");
+    background-size:  cover;
+    color:  white;
 }
+
+ul { 
+    padding:  10px;
+    background:  rgba(0,0,0,0.5);
+ }
+
+ li {
+    display:  inline;
+    padding:  0px 10px 0px 10px;
+ }
+
+ a {
+    color:  white;
+ }
+
+}
+
+
 
 
 .main_heading {
@@ -27,19 +55,17 @@
 
 }
 
-.post_list {
+/*.post_list {
     margin: auto ;
     max-width: 800px;
     min-width: 220px;
 
-}
+} */
 
-.nav
-{
-    text-align:center;
-    color: white;
-    padding: 0px 10px 0px 10px;
-    font-size: 20px;
+article {
+    margin:  0 auto;
+    max-width: 500px;
+    padding:  20px;
 }
 
 
@@ -50,4 +76,26 @@ img
     margin-right: auto;
     width: 40%;
     max-width: 100px;
+}
+
+
+@media (max-width: 500px) {
+    /*body{
+    background: red;
+    }*/
+
+.page-header {
+    h1 { 
+    font-size:  36px; 
+    }
+
+    h2 {
+    font-size:  16px;
+    }
+
+    li {
+        display:  block;
+        padding:  5px;
+    }
+}
 }
