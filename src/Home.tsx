@@ -1,10 +1,8 @@
-import NavBar from "./NavBar";
 import font from "./variables";
 
 export const Home = () => {
   return (
     <>
-      {/* <NavBar /> */}
       <div
         style={{
           display: "flex",

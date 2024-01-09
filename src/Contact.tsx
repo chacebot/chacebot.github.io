@@ -1,11 +1,10 @@
-import NavBar from "./NavBar";
 import font from "./variables";
 
 export const Contact = () => {
   return (
     <>
-      {/* <NavBar /> */}
       <div
+        className="vh-100"
         style={{
           display: "flex",
           flexDirection: "column",

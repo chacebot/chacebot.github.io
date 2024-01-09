@@ -4,6 +4,7 @@ export const Personal = () => {
   return (
     <>
       <div
+        className="vh-100"
         style={{
           display: "flex",
           flexDirection: "column",

@@ -2,15 +2,20 @@ import font from "./variables";
 import { ContentItem } from "./ContentItem";
 import { ProfessionalContent } from "./Content/Professional/ProfessionalContent";
 import { ContentEntry } from "./ContentEntry";
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Stack } from "react-bootstrap";
 
 export const Professional = () => {
   return (
     <>
-      <Container>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
         <Row style={{ maxWidth: "100%" }}>
           <Col>
             <Row style={{ justifyContent: "center" }}>
@@ -49,7 +54,12 @@ export const Professional = () => {
             </Row>
           </Col>
         </Row>
-        <Row style={{ justifyContent: "center", maxWidth: "100%" }}>
+        <Row
+          style={{
+            justifyContent: "center",
+            maxWidth: "100%",
+          }}
+        >
           {ProfessionalContent.entries.map((entry: ContentEntry) => {
             console.log(entry);
             return (
@@ -59,7 +69,7 @@ export const Professional = () => {
             );
           })}
         </Row>
-      </Container>
+      </div>
     </>
   );
 };
