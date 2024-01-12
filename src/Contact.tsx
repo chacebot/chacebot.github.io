@@ -1,4 +1,6 @@
 import font from "./variables";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export const Contact = () => {
   return (
@@ -12,10 +14,23 @@ export const Contact = () => {
           width: "100%",
         }}
       >
-        <h1 style={{ color: font.color, marginTop: "20px" }}>
-          {" "}
-          Reach out (under construction){" "}
-        </h1>
+        <Row style={{ maxWidth: "100%" }}>
+          <Col>
+            <Row style={{ justifyContent: "center" }}>
+              <h2
+                style={{
+                  color: font.color,
+                  marginBottom: "10px",
+                  textAlign: "center",
+                  alignContent: "center",
+                  maxWidth: "90%",
+                }}
+              >
+                Reach out (under construction)
+              </h2>
+            </Row>
+          </Col>
+        </Row>
       </div>
     </>
   );

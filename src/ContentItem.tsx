@@ -1,4 +1,5 @@
 import Card from "react-bootstrap/Card";
+import Carousel from "react-bootstrap/Carousel";
 import { ContentEntry } from "./ContentEntry";
 
 export interface ContentItemProps {
@@ -12,12 +13,23 @@ export const ContentItem = (props: ContentItemProps) => {
       <Card className="text-center">
         <Card.Body>
           <Card.Title>{props.content.heading}</Card.Title>
-          <Card.Img
-            className="m-3"
-            style={{ width: "80%", maxHeight: "20%" }}
-            src={props.content.images[0]}
-          />
-          <Card.Text>{props.content.body}</Card.Text>
+          <Carousel data-bs-theme="dark">
+            {props.content.images.map((image: any) => {
+              return (
+                <Carousel.Item>
+                  <Card.Img
+                    className="d-block w-100"
+                    style={{
+                      height: "100%",
+                      width: "auto",
+                    }}
+                    src={image}
+                  />
+                </Carousel.Item>
+              );
+            })}
+          </Carousel>
+          <Card.Text className="mt-3">{props.content.body}</Card.Text>
         </Card.Body>
       </Card>
     </div>

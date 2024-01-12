@@ -36,20 +36,49 @@ export const Professional = () => {
               <p
                 style={{
                   color: font.color,
-                  marginBottom: "10px",
+                  margin: "10px",
                   textAlign: "center",
                   alignContent: "center",
-                  maxWidth: "100%",
+                  maxWidth: "80%",
                 }}
               >
-                I have been working as a Robotics engineer forever. Lorem ipsum
-                dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                I am a seasoned professional with a passion for robotics and
+                software development, specializing in Perception, Motion
+                Control, and Manipulation.
+              </p>
+              <p
+                style={{
+                  color: font.color,
+                  margin: "10px",
+                  textAlign: "center",
+                  alignContent: "center",
+                  maxWidth: "80%",
+                }}
+              >
+                My expertise encompasses a wide range of technologies and tools,
+                including ROS (Robot Operating System), C++, Python, OpenCV, and
+                PyTorch, which I leverage to design and implement innovative
+                robotics solutions. With a deep understanding of kinematics, PID
+                control, and stereo cameras, I excel in creating robust systems
+                that push the boundaries of what's possible in the field of
+                robotics.
+              </p>
+              <p
+                style={{
+                  color: font.color,
+                  margin: "10px",
+                  textAlign: "center",
+                  alignContent: "center",
+                  maxWidth: "80%",
+                }}
+              >
+                In addition to my proficiency in robotics, I have a strong
+                background in web app development, where I utilize technologies
+                such as React, Node.js, MongoDB, and SQL to build intuitive and
+                efficient web applications. My skills extend to backend
+                development using Python, REST API design, and database
+                management, enabling me to create seamless user experiences
+                across a variety of platforms.
               </p>
             </Row>
           </Col>

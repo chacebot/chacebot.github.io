@@ -1,8 +1,9 @@
 import { ContentEntry } from "../../../ContentEntry"
 import surgicalRobot1 from "./surgicalRobot1.png"
+import rcmRobot from "./rcmRobot.gif"
 
 export const SurgicalRobot: ContentEntry = {
-    heading: "Surgical Robot",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    images: [surgicalRobot1]
+    heading: "Surgical Robotics",
+    body: "At CDP, I led a team of Software Engineers to create the control system, UI, and infrastructure for a single port surgical robot. Enabling a surgeon to remotly control the robot's setup position from the surgeon console outside of the sterile field. Further reducing the invasiveness of these procedures.",
+    images: [surgicalRobot1, rcmRobot ]
 }

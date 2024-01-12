@@ -11,7 +11,7 @@ const NavBar = () => {
     <>
       <Navbar sticky="top" expand={false} className="bg-body-tertiary mb-3">
         <Container fluid>
-          <Navbar.Brand href="#">Chace Medeiros</Navbar.Brand>
+          <Navbar.Brand href="/">Chace Medeiros</Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${false}`} />
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-${false}`}
@@ -30,7 +30,7 @@ const NavBar = () => {
               >
                 <Nav.Link href="/professional">Professional</Nav.Link>
                 <Nav.Link href="/personal">Personal</Nav.Link>
-                <Nav.Link href="/causes">Causes</Nav.Link>
+                {/* <Nav.Link href="/causes">Causes</Nav.Link> */}
                 <Nav.Link href="/contact">Contact</Nav.Link>
               </Nav>
             </Offcanvas.Body>
