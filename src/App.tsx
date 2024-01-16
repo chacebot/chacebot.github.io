@@ -6,18 +6,19 @@ import { Causes } from "./Causes";
 import { Contact } from "./Contact";
 import { PageWrapper } from "./PageWrapper";
 import { NoMatch } from "./NoMatch";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
     <>
       <PageWrapper>
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route path="/professional" element={<Professional />} />
           <Route path="/personal" element={<Personal />} />
           <Route path="/causes" element={<Causes />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NoMatch />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </PageWrapper>
     </>
