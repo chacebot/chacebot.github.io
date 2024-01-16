@@ -13,7 +13,7 @@ export const ContentItem = (props: ContentItemProps) => {
       <Card className="text-center">
         <Card.Body>
           <Card.Title>{props.content.heading}</Card.Title>
-          <Carousel data-bs-theme="dark">
+          <Carousel pause="hover" interval={10000} data-bs-theme="dark">
             {props.content.images.map((image: any) => {
               return (
                 <Carousel.Item>
@@ -30,6 +30,9 @@ export const ContentItem = (props: ContentItemProps) => {
             })}
           </Carousel>
           <Card.Text className="mt-3">{props.content.body}</Card.Text>
+          {props.content.links?.map((link: any) => {
+            return <Card.Link href={link.url}> {link.label}</Card.Link>;
+          })}
         </Card.Body>
       </Card>
     </div>

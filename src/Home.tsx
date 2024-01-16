@@ -17,24 +17,49 @@ export const Home = () => {
         }}
       >
         <Row style={{ justifyContent: "center", width: "100%" }}>
-          <Col style={{ display: "flex", alignItems: "center" }}>
-            <div style={{ width: "100%", justifyContent: "center" }}>
+          <Col
+            xs={{ order: "last" }}
+            sm={{ order: "first" }}
+            style={{ display: "flex", justifyContent: "center" }}
+          >
+            <div
+              style={{
+                width: "80%",
+                marginTop: "20px",
+                justifyContent: "center",
+              }}
+            >
+              <h1
+                style={{
+                  color: font.color,
+                  textAlign: "left",
+                  fontSize: "60px",
+                }}
+              >
+                Hello.
+              </h1>
               <h1
                 style={{
                   color: font.color,
                   marginBottom: "10px",
-                  textAlign: "center",
+                  // textAlign: "center",
+                  fontSize: "50px",
                 }}
               >
-                Hello!
+                Welcome to my website!
               </h1>
             </div>
           </Col>
-          <Col style={{ display: "flex", justifyContent: "center" }}>
+          <Col
+            xs={{ order: "first" }}
+            sm={{ order: "last" }}
+            style={{ display: "flex", justifyContent: "center" }}
+          >
             <img
               style={{
                 height: "300px",
                 width: "auto",
+                borderRadius: "20px",
               }}
               src={scubaProfile}
             />
