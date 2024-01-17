@@ -6,9 +6,17 @@ import { Causes } from "./Causes";
 import { Contact } from "./Contact";
 import { PageWrapper } from "./PageWrapper";
 import { NoMatch } from "./NoMatch";
-import { Link } from "react-router-dom";
+import ReactGA from "react-ga";
+import { useEffect } from "react";
+const TRACKING_ID = "G-B9F8KZ81K0";
+
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   return (
     <>
       <PageWrapper>
