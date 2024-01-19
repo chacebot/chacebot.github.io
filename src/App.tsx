@@ -8,13 +8,19 @@ import { PageWrapper } from "./PageWrapper";
 import { NoMatch } from "./NoMatch";
 import ReactGA from "react-ga4";
 import { useEffect } from "react";
-const TRACKING_ID = "UA-299368337-1";
-
-ReactGA.initialize(TRACKING_ID);
+import GA4React from "ga-4-react";
+const TRACKING_ID = "G-3Z0WHF5ZTS";
 
 function App() {
   useEffect(() => {
-    ReactGA.send("pageview");
+    try {
+      setTimeout((_) => {
+        const ga4React = new GA4React(TRACKING_ID);
+        ga4React.initialize().catch((err) => console.error(err));
+      }, 1000);
+    } catch (err) {
+      console.error(err);
+    }
   }, []);
 
   return (
