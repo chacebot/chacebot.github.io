@@ -6,15 +6,15 @@ import { Causes } from "./Causes";
 import { Contact } from "./Contact";
 import { PageWrapper } from "./PageWrapper";
 import { NoMatch } from "./NoMatch";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import { useEffect } from "react";
-const TRACKING_ID = "G-B9F8KZ81K0";
+const TRACKING_ID = "UA-299368337-1";
 
 ReactGA.initialize(TRACKING_ID);
 
 function App() {
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    ReactGA.send("pageview");
   }, []);
 
   return (
