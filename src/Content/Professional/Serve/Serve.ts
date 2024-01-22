@@ -1,4 +1,4 @@
-import { ContentEntry } from "../../../ContentEntry"
+import { ContentEntry } from "../../../Common/ContentEntry"
 import serveChace from "./serveChace.jpg"
 import serveTest from "./serveTest.gif"
 import serveAspen from "./serveAspen.gif"
