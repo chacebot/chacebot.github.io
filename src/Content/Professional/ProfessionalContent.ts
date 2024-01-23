@@ -1,8 +1,11 @@
 import { SurgicalRobot } from "./SurgicalRobot/SurgicalRobot"
 import { Serve } from "./Serve/Serve"
 import { Zippy } from "./Zippy/Zippy"
-import { EntryCollection } from "../../Common/ContentEntry"
+import { PageInfo } from "../../Common/ContentStructure"
+import professional from "./professional.md"
 
-export const ProfessionalContent: EntryCollection = {
-    entries: [SurgicalRobot, Serve, Zippy]
+
+export const ProfessionalContent: PageInfo = {
+    summary: professional,
+    content: [SurgicalRobot, Serve, Zippy]
 }

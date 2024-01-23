@@ -1,6 +1,6 @@
 import Card from "react-bootstrap/Card";
 import Carousel from "react-bootstrap/Carousel";
-import { ContentEntry } from "./ContentEntry";
+import { ContentEntry } from "./ContentStructure";
 
 export interface ContentItemProps {
   content: ContentEntry;

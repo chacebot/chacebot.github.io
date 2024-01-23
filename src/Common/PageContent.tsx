@@ -1,4 +1,4 @@
-import { PageInfo, ContentEntry } from "./ContentEntry";
+import { PageInfo, ContentEntry } from "./ContentStructure";
 import { ContentItem } from "./ContentItem";
 import font from "../Styles/variables";
 import Row from "react-bootstrap/Row";
@@ -17,7 +17,8 @@ export const PageContent = (props: PageContentProps) => {
     fetch(props.info.summary)
       .then((res) => res.text())
       .then((text) => setSummaryText(text));
-  });
+  }, []);
+
   return (
     <>
       <div
@@ -28,32 +29,25 @@ export const PageContent = (props: PageContentProps) => {
           width: "100%",
         }}
       >
-        <Row style={{ maxWidth: "100%" }}>
+        <Row style={{ width: "100%" }}>
           <Col>
-            {/* <Row style={{ justifyContent: "center" }}>
-              <h2
-                style={{
-                  color: font.color,
-                  marginBottom: "10px",
-                  textAlign: "center",
-                  alignContent: "center",
-                  maxWidth: "90%",
-                }}
-              >
-                {page.heading}
-              </h2>
-            </Row> */}
             <Row
               style={{
                 justifyContent: "center",
-                color: font.color,
-                margin: "10px",
-                textAlign: "center",
-                alignContent: "center",
-                maxWidth: "80%",
               }}
             >
-              <Markdown>{summaryText}</Markdown>
+              <div
+                style={{
+                  justifyContent: "center",
+                  color: font.color,
+                  margin: "10px",
+                  textAlign: "center",
+                  alignContent: "center",
+                  width: "80%",
+                }}
+              >
+                <Markdown>{summaryText}</Markdown>
+              </div>
             </Row>
           </Col>
         </Row>
@@ -63,21 +57,19 @@ export const PageContent = (props: PageContentProps) => {
             maxWidth: "100%",
           }}
         >
-          {props.info.content.entries.map(
-            (entry: ContentEntry, idx: number) => {
-              return (
-                <Col
-                  xs={10}
-                  md={1}
-                  key={idx}
-                  className="m-2"
-                  style={{ minWidth: "40%" }}
-                >
-                  <ContentItem key={idx} content={entry} />
-                </Col>
-              );
-            }
-          )}
+          {props.info.content.map((entry: ContentEntry, idx: number) => {
+            return (
+              <Col
+                xs={10}
+                md={1}
+                key={idx}
+                className="m-2"
+                style={{ minWidth: "40%" }}
+              >
+                <ContentItem key={idx} content={entry} />
+              </Col>
+            );
+          })}
         </Row>
       </div>
     </>

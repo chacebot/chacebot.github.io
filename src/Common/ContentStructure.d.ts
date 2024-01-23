@@ -5,12 +5,7 @@ export interface ContentEntry {
     links?: any[];
 }
 
-export interface EntryCollection {
-    entries: ContentEntry[];
-}
-
 export interface PageInfo {
-    heading: string;
     summary: string;
-    content: EntryCollection;
+    content: ContentEntry[];
 }

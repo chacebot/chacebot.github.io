@@ -1,9 +1,8 @@
-import {PageInfo} from "../../Common/ContentEntry"
+import {PageInfo} from "../../Common/ContentStructure"
 import mtb from "./mtb/mtb.md"
-import {ProfessionalContent} from "../Professional/ProfessionalContent"
+import { Serve } from "../Professional/Serve/Serve"
 
 export const PersonalContent: PageInfo = {
-    heading: "Hello Markdown",
     summary: mtb,
-    content: ProfessionalContent,
+    content: [Serve],
 }

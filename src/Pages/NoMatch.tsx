@@ -14,23 +14,18 @@ export const NoMatch = () => {
           width: "100%",
         }}
       >
-        <Row style={{ maxWidth: "100%" }}>
-          <Col>
-            <Row style={{ justifyContent: "center" }}>
-              <h2
-                style={{
-                  color: font.color,
-                  marginBottom: "10px",
-                  textAlign: "center",
-                  alignContent: "center",
-                  maxWidth: "90%",
-                }}
-              >
-                No such page exists.
-              </h2>
-            </Row>
-          </Col>
-        </Row>
+        <div style={{ height: "60%", display: "flex", alignItems: "center" }}>
+          <h1
+            style={{
+              color: font.color,
+              marginBottom: "10px",
+              textAlign: "center",
+              justifyContent: "center",
+            }}
+          >
+            No such page exists.
+          </h1>
+        </div>
       </div>
     </>
   );

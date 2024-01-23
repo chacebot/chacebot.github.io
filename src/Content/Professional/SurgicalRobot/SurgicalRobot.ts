@@ -1,4 +1,4 @@
-import { ContentEntry } from "../../../Common/ContentEntry"
+import { ContentEntry } from "../../../Common/ContentStructure"
 import surgicalRobot1 from "./surgicalRobot1.png"
 import rcmRobot from "./robotRCM.gif"
 

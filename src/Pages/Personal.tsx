@@ -1,6 +1,3 @@
-import font from "../Styles/variables";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import { PageContent } from "../Common/PageContent";
 import { PersonalContent } from "../Content/Personal/PersonalContent";
 
