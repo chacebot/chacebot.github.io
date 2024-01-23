@@ -1,8 +1,7 @@
 import {PageInfo} from "../../Common/ContentStructure"
-import mtb from "./mtb/mtb.md"
-import { Serve } from "../Professional/Serve/Serve"
+import personal from "./personal.md"
 
 export const PersonalContent: PageInfo = {
-    summary: mtb,
-    content: [Serve],
+    summary: personal,
+    content: [],
 }

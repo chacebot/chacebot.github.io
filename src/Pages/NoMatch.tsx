@@ -1,6 +1,4 @@
 import font from "../Styles/variables";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 export const NoMatch = () => {
   return (
