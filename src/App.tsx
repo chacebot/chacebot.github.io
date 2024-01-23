@@ -1,28 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-import { Home } from "./Home";
-import { Professional } from "./Professional";
-import { Personal } from "./Personal";
-import { Causes } from "./Causes";
-import { Contact } from "./Contact";
-import { PageWrapper } from "./PageWrapper";
-import { NoMatch } from "./NoMatch";
-import ReactGA from "react-ga4";
-import { useEffect } from "react";
-import GA4React from "ga-4-react";
-const TRACKING_ID = "G-3Z0WHF5ZTS";
+import { Home } from "./Pages/Home";
+import { Professional } from "./Pages/Professional";
+import { Personal } from "./Pages/Personal";
+import { Causes } from "./Pages/Causes";
+import { Contact } from "./Pages/Contact";
+import { PageWrapper } from "./Common/PageWrapper";
+import { NoMatch } from "./Pages/NoMatch";
 
 function App() {
-  useEffect(() => {
-    try {
-      setTimeout((_) => {
-        const ga4React = new GA4React(TRACKING_ID);
-        ga4React.initialize().catch((err) => console.error(err));
-      }, 1000);
-    } catch (err) {
-      console.error(err);
-    }
-  }, []);
-
   return (
     <>
       <PageWrapper>
