@@ -1,13 +1,19 @@
 {
   "files": {
     "main.css": "/static/css/main.c87dc5c9.css",
-    "main.js": "/static/js/main.e4eed406.js",
+    "main.js": "/static/js/main.31865b76.js",
     "static/media/serveTest.gif": "/static/media/serveTest.a3466ac04f8db20678d6.gif",
     "static/media/serveAspen.gif": "/static/media/serveAspen.ff4778597dce321a71c7.gif",
+    "static/media/poop1.gif": "/static/media/poop1.eddf70dad9c76a555281.gif",
     "static/media/zippy1.gif": "/static/media/zippy1.10b36c6487357cd5682c.gif",
     "static/media/sway1.gif": "/static/media/sway1.564c348eb2313a6f4ab4.gif",
+    "static/media/poop3.jpg": "/static/media/poop3.7b13605e89120304dcff.jpg",
+    "static/media/poop6.jpg": "/static/media/poop6.8be00924ead4e8b98698.jpg",
+    "static/media/poop5.jpg": "/static/media/poop5.016918858994716b45dd.jpg",
     "static/media/scuba1.jpg": "/static/media/scuba1.64ad9e41ff1ba444ab4b.jpg",
+    "static/media/poop4.jpg": "/static/media/poop4.c37977133ac60bc290e9.jpg",
     "static/media/robotRCM.gif": "/static/media/robotRCM.bcd58945bf87c87a939f.gif",
+    "static/media/poop2.jpg": "/static/media/poop2.3274254944a80fbbb0c1.jpg",
     "static/media/surgicalRobot1.png": "/static/media/surgicalRobot1.b69ac59dc8e64cea57c3.png",
     "static/media/sway2.png": "/static/media/sway2.dc8074c5354a60e30eb6.png",
     "static/media/zippy2.png": "/static/media/zippy2.fb30258f18b7fe91c0ea.png",
@@ -16,10 +22,10 @@
     "index.html": "/index.html",
     "static/media/personal.md": "/static/media/personal.1d418322042770805d77.md",
     "main.c87dc5c9.css.map": "/static/css/main.c87dc5c9.css.map",
-    "main.e4eed406.js.map": "/static/js/main.e4eed406.js.map"
+    "main.31865b76.js.map": "/static/js/main.31865b76.js.map"
   },
   "entrypoints": [
     "static/css/main.c87dc5c9.css",
-    "static/js/main.e4eed406.js"
+    "static/js/main.31865b76.js"
   ]
 }
