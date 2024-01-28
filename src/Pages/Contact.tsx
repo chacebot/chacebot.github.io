@@ -59,7 +59,7 @@ export const Contact = () => {
                   delay={{ show: 250, hide: 1000000 }}
                   overlay={renderTooltip}
                 >
-                  <div style={{ cursor: "pointer" }}>
+                  <div>
                     <Gmail />
                   </div>
                 </OverlayTrigger>
