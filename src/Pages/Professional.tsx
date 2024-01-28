@@ -5,7 +5,7 @@ export const Professional = () => {
   return (
     <>
       <div
-        className="vh-100"
+        className="h-100"
         style={{
           display: "flex",
           flexDirection: "column",

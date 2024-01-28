@@ -29,7 +29,7 @@ const NavBar = () => {
                 activeKey={location.pathname}
               >
                 <Nav.Link href="/professional">Professional</Nav.Link>
-                <Nav.Link href="/personal">Personal</Nav.Link>
+                {/* <Nav.Link href="/personal">Personal</Nav.Link> */}
                 {/* <Nav.Link href="/causes">Causes</Nav.Link> */}
                 <Nav.Link href="/contact">Contact</Nav.Link>
               </Nav>
