@@ -13,7 +13,7 @@ export const ContentItem = (props: ContentItemProps) => {
       <Card className="text-center">
         <Card.Body>
           <Card.Title>{props.content.heading}</Card.Title>
-          <Carousel pause="hover" interval={10000} data-bs-theme="dark">
+          <Carousel pause="hover" interval={null} data-bs-theme="dark">
             {props.content.images.map((image: any, idx: number) => {
               return (
                 <Carousel.Item key={idx}>
