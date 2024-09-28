@@ -1,8 +1,8 @@
 import React from "react";
 
-export const Footer: React.FC = () => {
+export const Footer = (props: any) => {
   return (
-    <div className="footer">
+    <div className={props.className}>
       <p>contact@phoenix-mc.org</p>
       <p>(800) 555-1234</p>
     </div>
