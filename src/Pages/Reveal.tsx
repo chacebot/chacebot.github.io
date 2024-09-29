@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
+import { ReactComponent as Motorcycle } from "../assets/motorcycle-icon.svg";
 
 interface Props {
   children: JSX.Element;
@@ -24,7 +25,7 @@ export const Reveal = ({ children, width = "fit-content" }: Props) => {
 
   return (
     <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }}>
-      <motion.div
+      {/* <motion.div
         variants={{
           hidden: { opacity: 0, y: 200 },
           visible: { opacity: 1, y: 0 },
@@ -34,7 +35,8 @@ export const Reveal = ({ children, width = "fit-content" }: Props) => {
         transition={{ duration: 0.5, delay: 0.25 }}
       >
         {children}
-      </motion.div>
+      </motion.div> */}
+      {children}
       <motion.div
         variants={{
           hidden: { left: 0 },
@@ -42,18 +44,24 @@ export const Reveal = ({ children, width = "fit-content" }: Props) => {
         }}
         initial="hidden"
         animate={slideControls}
-        transition={{ duration: 0.5, ease: "easeIn" }}
+        transition={{ duration: 3 }}
         style={{
           position: "absolute",
-          top: 4,
-          bottom: 4,
+          top: 0,
+          bottom: 10,
           left: 0,
           right: 0,
-          background: "#f53f1f",
+          background: "#f00",
           zIndex: 20,
           borderRadius: "5px",
+          display: "flex",
+          flex: "1",
+          alignItems: "center",
+          textAlign: "left",
         }}
-      />
+      >
+        <Motorcycle style={{ maxHeight: "30px" }} />
+      </motion.div>
     </div>
   );
 };

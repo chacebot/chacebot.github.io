@@ -4,9 +4,9 @@ import { Reveal } from "./Reveal";
 const AboutSection = (props: any) => {
   return (
     <div className={props.className}>
-      <Reveal>
-        <h2>About Phoenix MC</h2>
-      </Reveal>
+      {/* <Reveal> */}
+      <h2>About Phoenix MC</h2>
+      {/* </Reveal> */}
       <Reveal>
         <p>
           Our purpose is to promote sane, sober, and safe motorcycling, to
