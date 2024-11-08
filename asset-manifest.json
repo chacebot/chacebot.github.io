@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.706a12b4.css",
-    "main.js": "/static/js/main.dcb15711.js",
+    "main.css": "/static/css/main.4a427b0a.css",
+    "main.js": "/static/js/main.7ce92245.js",
     "static/media/serveTest.gif": "/static/media/serveTest.a3466ac04f8db20678d6.gif",
     "static/media/serveAspen.gif": "/static/media/serveAspen.ff4778597dce321a71c7.gif",
     "static/media/poop1.gif": "/static/media/poop1.eddf70dad9c76a555281.gif",
@@ -11,27 +11,19 @@
     "static/media/poop6.jpg": "/static/media/poop6.8be00924ead4e8b98698.jpg",
     "static/media/poop5.jpg": "/static/media/poop5.016918858994716b45dd.jpg",
     "static/media/scuba1.jpg": "/static/media/scuba1.64ad9e41ff1ba444ab4b.jpg",
-    "static/media/carol2.jpg": "/static/media/carol2.2d5179d834ce52d24de2.jpg",
     "static/media/poop4.jpg": "/static/media/poop4.c37977133ac60bc290e9.jpg",
     "static/media/robotRCM.gif": "/static/media/robotRCM.bcd58945bf87c87a939f.gif",
     "static/media/poop2.jpg": "/static/media/poop2.3274254944a80fbbb0c1.jpg",
     "static/media/surgicalRobot1.png": "/static/media/surgicalRobot1.b69ac59dc8e64cea57c3.png",
-    "static/media/carol3.jpg": "/static/media/carol3.9dde4675d9e5ed6c7f9b.jpg",
     "static/media/sway2.png": "/static/media/sway2.dc8074c5354a60e30eb6.png",
     "static/media/zippy2.png": "/static/media/zippy2.fb30258f18b7fe91c0ea.png",
-    "static/media/carol1.jpg": "/static/media/carol1.71c3dc31dc2c78486520.jpg",
-    "static/media/phoenix.png": "/static/media/phoenix.26a8664fd3118608d80d.png",
     "static/media/serveChace.jpg": "/static/media/serveChace.018b2a4ab0e569947ebe.jpg",
-    "static/media/fire1.jpg": "/static/media/fire1.fe4ffeb326fa7bf0b4a8.jpg",
-    "static/media/motorcycle-icon.svg": "/static/media/motorcycle-icon.4ac866aac181f204cc9919600026b76d.svg",
-    "static/media/professional.md": "/static/media/professional.aabe0d76147707953c73.md",
     "index.html": "/index.html",
-    "static/media/personal.md": "/static/media/personal.1d418322042770805d77.md",
-    "main.706a12b4.css.map": "/static/css/main.706a12b4.css.map",
-    "main.dcb15711.js.map": "/static/js/main.dcb15711.js.map"
+    "main.4a427b0a.css.map": "/static/css/main.4a427b0a.css.map",
+    "main.7ce92245.js.map": "/static/js/main.7ce92245.js.map"
   },
   "entrypoints": [
-    "static/css/main.706a12b4.css",
-    "static/js/main.dcb15711.js"
+    "static/css/main.4a427b0a.css",
+    "static/js/main.7ce92245.js"
   ]
 }
