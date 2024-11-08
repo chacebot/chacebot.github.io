@@ -6,6 +6,7 @@ export interface ContentEntry {
 }
 
 export interface PageInfo {
-    summary: string;
+    headding: string;
+    summary: string[];
     content: ContentEntry[];
 }

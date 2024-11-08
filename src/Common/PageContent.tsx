@@ -11,14 +11,6 @@ interface PageContentProps {
 }
 
 export const PageContent = (props: PageContentProps) => {
-  const [summaryText, setSummaryText] = useState("");
-
-  useEffect(() => {
-    fetch(props.info.summary)
-      .then((res) => res.text())
-      .then((text) => setSummaryText(text));
-  }, []);
-
   return (
     <>
       <div
@@ -46,7 +38,10 @@ export const PageContent = (props: PageContentProps) => {
                   width: "80%",
                 }}
               >
-                <Markdown>{summaryText}</Markdown>
+                <h1 className="mb-3">{props.info.headding}</h1>
+                {props.info.summary.map((paragraph, index) => (
+                  <p key={index}>{paragraph} </p>
+                ))}
               </div>
             </Row>
           </Col>
