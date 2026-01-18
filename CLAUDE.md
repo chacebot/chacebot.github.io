@@ -1,0 +1,94 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Build & Run Commands
+
+This is a React TypeScript application built with Create React App. Use npm:
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+
+# Build for production
+npm run build
+
+# Run tests
+npm test
+
+# Deploy to GitHub Pages
+npm run deploy
+```
+
+## Architecture
+
+### Tech Stack
+- **React 18** with **TypeScript**
+- **React Router** for navigation
+- **Bootstrap 5** and **React Bootstrap** for styling
+- **React Markdown** for markdown rendering
+- **Create React App** build tooling
+
+### Project Structure
+- `src/Pages/` - Main page components (Home, Professional, Personal, Causes, Contact)
+- `src/Common/` - Reusable components (Header, NavBar, PageWrapper, ContentItem)
+- `src/Content/` - Content data organized by section (Professional, Personal)
+- `src/Styles/` - Global styles and CSS variables
+
+### Data Layer
+Content is organized in TypeScript files within `src/Content/`:
+- Professional projects defined in `ProfessionalContent.ts`
+- Personal content defined in `PersonalContent.ts`
+- Each content item follows the `ContentStructure` interface
+
+### Routing
+Routes are defined in `App.tsx`:
+- `/` - Home page
+- `/professional` - Professional projects showcase
+- `/personal` - Personal interests and activities
+- `/causes` - Causes and interests
+- `/contact` - Contact information
+- `*` - 404/NoMatch handler
+
+### Patterns
+- Pages use `PageWrapper` component for consistent layout
+- Content components use `ContentItem` for standardized display
+- Images and assets are organized by content section
+- Markdown files are used for longer-form content (e.g., `mtb.md`)
+
+## Workflow Preferences
+
+### Planning & Commits
+- For non-trivial changes, propose a short plan (1-6 bullets) describing edits, tests, and files before proceeding
+- Apply minimal, focused edits; one atomic commit per logically grouped change
+- Use short, descriptive commit messages
+- Run tests and build before committing; stop and report failures with suggested fixes
+- Create feature branches for changes (e.g., `git checkout -b feature/my-new-feature`)
+- Update relevant documentation (README.md, code comments) with every commit that changes behavior or APIs
+- Update BACKLOG.md (if present) when completing features or adding new items to the backlog
+- After completing a feature and testing, create PR using GitHub CLI: `gh pr create --title "Title" --body "Description" --web`
+
+### Code Quality
+- Follow React and TypeScript best practices
+- Create tests for all new code changes with every commit; no code merged without corresponding tests
+- Keep components small and composable
+- Use functional components with hooks
+- When referencing code, show exact `path/to/file` and function names
+- Maintain consistent TypeScript typing; avoid `any` types
+
+### UI/UX Guidelines
+- Ensure responsive design across device sizes (mobile-first approach)
+- Use Bootstrap utility classes where appropriate
+- Maintain visual hierarchy guiding users to important elements
+- Keep layouts clean with consistent spacing and typography
+- Test all routes and navigation flows
+- Ensure images are optimized and load efficiently
+
+### Deployment
+- Deploy using `npm run deploy` which builds and pushes to `gh-pages` branch
+- GitHub Pages serves from the root directory
+- Ensure all routes work correctly (including direct navigation to subroutes)
+- The build process automatically creates a `404.html` for client-side routing
