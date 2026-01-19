@@ -457,7 +457,7 @@ export const Home = () => {
                         <Carousel.Item key={imgIndex}>
                           <img
                             src={image}
-                            alt={`${project.heading} - Image ${imgIndex + 1}`}
+                            alt={`${project.heading} ${imgIndex + 1}`}
                             style={{
                               width: "100%",
                               height: "auto",

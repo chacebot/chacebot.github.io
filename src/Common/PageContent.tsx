@@ -3,8 +3,6 @@ import { ContentItem } from "./ContentItem";
 import font from "../Styles/variables";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Markdown from "react-markdown";
-import { useState, useEffect } from "react";
 
 interface PageContentProps {
   info: PageInfo;
