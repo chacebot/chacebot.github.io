@@ -87,11 +87,13 @@ export const Home = () => {
             position: "absolute",
             top: 0,
             left: 0,
-            width: "100%",
+            width: "125%",
             height: "100%",
             objectFit: "cover",
+            objectPosition: "left center",
             opacity: 0.6,
             zIndex: 0,
+            clipPath: "inset(0 20% 0 0)",
           }}
           onError={(e) => {
             console.error("Video error:", e);
@@ -138,29 +140,8 @@ export const Home = () => {
               }}
             >
               <AnimatedText
-                text="I LIKE TO BUILD"
+                text="COMMUNITY. CRAFTMANSHIP. QUALITY."
                 delay={0.5}
-                speed={80}
-                animateBy="word"
-              />
-            </h1>
-          </RevealText>
-
-          <RevealText delay={0.6} duration={1}>
-            <h1
-              style={{
-                fontSize: "clamp(3rem, 8vw, 7rem)",
-                fontWeight: 400,
-                color: designSystem.colors.textPrimary,
-                marginBottom: "2rem",
-                lineHeight: 1.1,
-                letterSpacing: "-0.02em",
-                fontFamily: designSystem.typography.fontFamily.heading,
-              }}
-            >
-              <AnimatedText
-                text="IMPOSSIBLE THINGS."
-                delay={1.5}
                 speed={80}
                 animateBy="word"
               />
@@ -180,7 +161,7 @@ export const Home = () => {
               }}
             >
               <AnimatedText
-                text="With extreme practicality, I make crazy ideas real."
+                text="THAT'S WHAT I VALUE."
                 delay={2.5}
                 speed={50}
                 animateBy="letter"
@@ -256,7 +237,7 @@ export const Home = () => {
                 fontWeight: 300,
                 color: designSystem.colors.textSecondary,
                 lineHeight: 1.8,
-                marginBottom: "3rem",
+                marginBottom: "1.5rem",
                 opacity: 0.85,
               }}
             >
@@ -264,77 +245,27 @@ export const Home = () => {
             </p>
           </TextReveal>
 
-          {/* My links section */}
           <TextReveal delay={400}>
-            <div style={{ marginBottom: "4rem" }}>
-              <h3
-                style={{
-                  fontSize: "clamp(1.25rem, 2vw, 1.5rem)",
-                  fontWeight: 400,
-                  color: designSystem.colors.accent,
-                  marginBottom: "1.5rem",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                }}
-              >
-                My links
-                <span style={{ color: designSystem.colors.accent }}>→</span>
-              </h3>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "2rem",
-                  flexWrap: "wrap",
-                }}
-              >
-                <OverlayTrigger
-                  placement="bottom"
-                  delay={{ show: 250, hide: 1000000 }}
-                  overlay={renderTooltip}
-                >
-                  <div
-                    style={{
-                      cursor: "pointer",
-                      opacity: 0.7,
-                      transition: "opacity 0.3s ease",
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
-                    onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
-                  >
-                    <Gmail />
-                  </div>
-                </OverlayTrigger>
-                <div
-                  style={{
-                    cursor: "pointer",
-                    opacity: 0.7,
-                    transition: "opacity 0.3s ease",
-                  }}
-                  onClick={() => {
-                    window.open("https://www.linkedin.com/in/chace-medeiros/");
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
-                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
-                >
-                  <LinkedIn />
-                </div>
-                <div
-                  style={{
-                    cursor: "pointer",
-                    opacity: 0.7,
-                    transition: "opacity 0.3s ease",
-                  }}
-                  onClick={() => {
-                    window.open("https://github.com/chacebot");
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
-                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
-                >
-                  <Github />
-                </div>
-              </div>
-            </div>
+            <p
+              style={{
+                fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
+                fontWeight: 300,
+                color: designSystem.colors.textSecondary,
+                lineHeight: 1.8,
+                marginBottom: "3rem",
+                opacity: 0.85,
+              }}
+            >
+              I leverage generative AI as a force multiplier to dramatically scale
+              my development capabilities. By strategically integrating AI tools into
+              my workflow, I accelerate prototyping, enhance code quality, and
+              rapidly iterate on complex problems. This approach allows me to focus
+              on high-level architecture and creative problem-solving while AI handles
+              repetitive tasks, code generation, and initial implementations. The
+              result is a significant increase in productivity and the ability to
+              tackle larger, more ambitious projects that would otherwise require
+              extensive time and resources.
+            </p>
           </TextReveal>
 
           {/* Skills sections */}
