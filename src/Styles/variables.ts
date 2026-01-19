@@ -4,8 +4,8 @@ export const designSystem = {
     // Primary palette - dark, minimalist
     primary: "#000000",
     secondary: "#111111",
-    accent: "#ffffff",
-    highlight: "#ffffff",
+    accent: "#00ff88", // Vibrant green accent
+    highlight: "#00ff88",
     
     // Neutral palette - dark theme
     background: "#000000",

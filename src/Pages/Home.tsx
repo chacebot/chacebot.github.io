@@ -1,6 +1,8 @@
 import { AnimatedText } from "../components/AnimatedText";
 import { RevealText } from "../components/RevealText";
 import { TextReveal } from "../components/TextReveal";
+import { SectionTitle } from "../components/SectionTitle";
+import { DropCap } from "../components/DropCap";
 import { designSystem } from "../Styles/variables";
 import { useEffect, useRef } from "react";
 import { ProfessionalContent } from "../Content/Professional/ProfessionalContent";
@@ -27,6 +29,38 @@ export const Home = () => {
       hello@chace.me
     </Tooltip>
   );
+
+  const skills = {
+    work: [
+      "JavaScript",
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "React",
+      "Node.js",
+      "Python",
+      "C++",
+      "ROS",
+      "OpenCV",
+      "PyTorch",
+      "MongoDB",
+      "SQL",
+      "Git",
+      "GitHub",
+    ],
+    fun: [
+      "Swift",
+      "SwiftUI",
+      "SwiftData",
+      "iOS Development",
+      "Rust",
+      "Tailwind",
+      "Figma",
+      "3D Printing",
+      "Welding",
+      "Robotics",
+    ],
+  };
 
   return (
     <>
@@ -175,17 +209,7 @@ export const Home = () => {
           }}
         >
           <TextReveal delay={0}>
-            <h2
-              style={{
-                fontSize: "clamp(2rem, 4vw, 3rem)",
-                fontWeight: 400,
-                color: designSystem.colors.textPrimary,
-                marginBottom: "3rem",
-                letterSpacing: "-0.01em",
-              }}
-            >
-              About.
-            </h2>
+            <SectionTitle>About</SectionTitle>
           </TextReveal>
 
           <TextReveal delay={100}>
@@ -199,12 +223,14 @@ export const Home = () => {
                 opacity: 0.85,
               }}
             >
-              I'm Chace, a tech enthusiast who has lived and worked in Rhode
-              Island, San Francisco, and Raleigh, NC. My passion lies in robotics
-              and software development, where I love to create innovative
-              solutions. I thrive on collaboration, constantly seeking new
-              learning opportunities, and finding ways to assist others in their
-              endeavors.
+              <DropCap>
+                I'm Chace, a tech enthusiast who has lived and worked in Rhode
+                Island, San Francisco, and Raleigh, NC. My passion lies in robotics
+                and software development, where I love to create innovative
+                solutions. I thrive on collaboration, constantly seeking new
+                learning opportunities, and finding ways to assist others in their
+                endeavors.
+              </DropCap>
             </p>
           </TextReveal>
 
@@ -230,11 +256,175 @@ export const Home = () => {
                 fontWeight: 300,
                 color: designSystem.colors.textSecondary,
                 lineHeight: 1.8,
+                marginBottom: "3rem",
                 opacity: 0.85,
               }}
             >
               {ProfessionalContent.summary[1]}
             </p>
+          </TextReveal>
+
+          {/* My links section */}
+          <TextReveal delay={400}>
+            <div style={{ marginBottom: "4rem" }}>
+              <h3
+                style={{
+                  fontSize: "clamp(1.25rem, 2vw, 1.5rem)",
+                  fontWeight: 400,
+                  color: designSystem.colors.accent,
+                  marginBottom: "1.5rem",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                }}
+              >
+                My links
+                <span style={{ color: designSystem.colors.accent }}>→</span>
+              </h3>
+              <div
+                style={{
+                  display: "flex",
+                  gap: "2rem",
+                  flexWrap: "wrap",
+                }}
+              >
+                <OverlayTrigger
+                  placement="bottom"
+                  delay={{ show: 250, hide: 1000000 }}
+                  overlay={renderTooltip}
+                >
+                  <div
+                    style={{
+                      cursor: "pointer",
+                      opacity: 0.7,
+                      transition: "opacity 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+                    onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
+                  >
+                    <Gmail />
+                  </div>
+                </OverlayTrigger>
+                <div
+                  style={{
+                    cursor: "pointer",
+                    opacity: 0.7,
+                    transition: "opacity 0.3s ease",
+                  }}
+                  onClick={() => {
+                    window.open("https://www.linkedin.com/in/chace-medeiros/");
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
+                >
+                  <LinkedIn />
+                </div>
+                <div
+                  style={{
+                    cursor: "pointer",
+                    opacity: 0.7,
+                    transition: "opacity 0.3s ease",
+                  }}
+                  onClick={() => {
+                    window.open("https://github.com/chacebot");
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
+                >
+                  <Github />
+                </div>
+              </div>
+            </div>
+          </TextReveal>
+
+          {/* Skills sections */}
+          <TextReveal delay={500}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+                gap: "3rem",
+                marginTop: "4rem",
+              }}
+            >
+              <div>
+                <h4
+                  style={{
+                    fontSize: "clamp(1.1rem, 1.8vw, 1.3rem)",
+                    fontWeight: 400,
+                    color: designSystem.colors.textPrimary,
+                    marginBottom: "1.5rem",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                  }}
+                >
+                  <span style={{ fontSize: "1.2rem" }}>💻</span> Use at work
+                </h4>
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "0.75rem",
+                  }}
+                >
+                  {skills.work.map((skill, index) => (
+                    <span
+                      key={index}
+                      style={{
+                        padding: "0.5rem 1rem",
+                        backgroundColor: designSystem.colors.surfaceElevated,
+                        color: designSystem.colors.textPrimary,
+                        borderRadius: "4px",
+                        fontSize: "0.875rem",
+                        fontWeight: 300,
+                      }}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h4
+                  style={{
+                    fontSize: "clamp(1.1rem, 1.8vw, 1.3rem)",
+                    fontWeight: 400,
+                    color: designSystem.colors.textPrimary,
+                    marginBottom: "1.5rem",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                  }}
+                >
+                  <span style={{ fontSize: "1.2rem" }}>🎨</span> Use for fun
+                </h4>
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "0.75rem",
+                  }}
+                >
+                  {skills.fun.map((skill, index) => (
+                    <span
+                      key={index}
+                      style={{
+                        padding: "0.5rem 1rem",
+                        backgroundColor: designSystem.colors.surfaceElevated,
+                        color: designSystem.colors.textPrimary,
+                        borderRadius: "4px",
+                        fontSize: "0.875rem",
+                        fontWeight: 300,
+                      }}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
           </TextReveal>
         </div>
       </section>
@@ -258,17 +448,7 @@ export const Home = () => {
           }}
         >
           <TextReveal delay={0}>
-            <h2
-              style={{
-                fontSize: "clamp(2rem, 4vw, 3rem)",
-                fontWeight: 400,
-                color: designSystem.colors.textPrimary,
-                marginBottom: "4rem",
-                letterSpacing: "-0.01em",
-              }}
-            >
-              Projects.
-            </h2>
+            <SectionTitle>Projects</SectionTitle>
           </TextReveal>
 
           {ProfessionalContent.content.map((project, index) => (
@@ -383,17 +563,7 @@ export const Home = () => {
           }}
         >
           <TextReveal delay={0}>
-            <h2
-              style={{
-                fontSize: "clamp(2rem, 4vw, 3rem)",
-                fontWeight: 400,
-                color: designSystem.colors.textPrimary,
-                marginBottom: "1rem",
-                letterSpacing: "-0.01em",
-              }}
-            >
-              Contact.
-            </h2>
+            <SectionTitle>Contact</SectionTitle>
           </TextReveal>
 
           <TextReveal delay={100}>
