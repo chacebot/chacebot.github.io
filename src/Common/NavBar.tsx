@@ -1,43 +1,106 @@
-import { useLocation } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Offcanvas from "react-bootstrap/Offcanvas";
 
 const NavBar = () => {
-  const location = useLocation();
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
-    <>
-      <Navbar sticky="top" expand={false} className="bg-body-tertiary mb-3">
-        <Container fluid>
-          <Navbar.Brand href="/">Chace Medeiros</Navbar.Brand>
-          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${false}`} />
-          <Navbar.Offcanvas
-            id={`offcanvasNavbar-expand-${false}`}
-            aria-labelledby={`offcanvasNavbarLabel-expand-${false}`}
-            placement="end"
+    <Navbar 
+      expand="lg"
+      sticky="top"
+      style={{ 
+        backgroundColor: "rgba(0, 0, 0, 0.8)",
+        backdropFilter: "blur(10px)",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+        paddingTop: "1.5rem",
+        paddingBottom: "1.5rem",
+        zIndex: 1000,
+        position: "sticky",
+        top: 0,
+      }}
+      variant="dark"
+    >
+      <Container fluid style={{ maxWidth: "1400px", paddingLeft: "2rem", paddingRight: "2rem" }}>
+        <Navbar.Brand 
+          onClick={scrollToTop}
+          style={{
+            fontWeight: 400,
+            fontSize: "0.875rem",
+            color: "#ffffff",
+            textDecoration: "none",
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            opacity: 0.9,
+            cursor: "pointer",
+          }}
+        >
+          Chace Medeiros
+        </Navbar.Brand>
+        <Navbar.Toggle 
+          aria-controls="basic-navbar-nav"
+          style={{ 
+            border: "1px solid #1a1a1a",
+            color: "#ffffff",
+          }}
+        />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav 
+            className="ms-auto"
+            style={{ gap: "2rem" }}
           >
-            <Offcanvas.Header closeButton>
-              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${false}`}>
-                Menu
-              </Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-              <Nav
-                className="justify-content-end flex-grow-1 pe-3"
-                activeKey={location.pathname}
-              >
-                <Nav.Link href="/professional">Professional</Nav.Link>
-                {/* <Nav.Link href="/personal">Personal</Nav.Link> */}
-                {/* <Nav.Link href="/causes">Causes</Nav.Link> */}
-                <Nav.Link href="/contact">Contact</Nav.Link>
-              </Nav>
-            </Offcanvas.Body>
-          </Navbar.Offcanvas>
-        </Container>
-      </Navbar>
-    </>
+            <Nav.Link 
+              onClick={() => scrollToSection("about")}
+              style={{ 
+                fontWeight: 400,
+                padding: 0,
+                fontSize: "0.875rem",
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+                cursor: "pointer",
+              }}
+            >
+              About
+            </Nav.Link>
+            <Nav.Link 
+              onClick={() => scrollToSection("projects")}
+              style={{ 
+                fontWeight: 400,
+                padding: 0,
+                fontSize: "0.875rem",
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+                cursor: "pointer",
+              }}
+            >
+              Projects
+            </Nav.Link>
+            <Nav.Link 
+              onClick={() => scrollToSection("contact")}
+              style={{ 
+                fontWeight: 400,
+                padding: 0,
+                fontSize: "0.875rem",
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+                cursor: "pointer",
+              }}
+            >
+              Contact
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 

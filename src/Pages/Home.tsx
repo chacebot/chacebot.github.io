@@ -1,95 +1,477 @@
-import font from "../Styles/variables";
-import Row from "react-bootstrap/Row";
-import scubaProfile from "../Content/Home/scuba1.jpg";
-import Col from "react-bootstrap/Col";
+import { AnimatedText } from "../components/AnimatedText";
+import { RevealText } from "../components/RevealText";
+import { TextReveal } from "../components/TextReveal";
+import { designSystem } from "../Styles/variables";
+import { useEffect, useRef } from "react";
+import { ProfessionalContent } from "../Content/Professional/ProfessionalContent";
+import { Gmail } from "../Content/Contact/Icons/Gmail";
+import { LinkedIn } from "../Content/Contact/Icons/LinkedIn";
+import { Github } from "../Content/Contact/Icons/Github";
+import Carousel from "react-bootstrap/Carousel";
+import Tooltip from "react-bootstrap/Tooltip";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 export const Home = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch((error) => {
+        console.error("Error playing video:", error);
+      });
+    }
+  }, []);
+
+  const renderTooltip = (props: any) => (
+    <Tooltip id="email-tooltip" {...props}>
+      hello@chace.me
+    </Tooltip>
+  );
+
   return (
     <>
-      <div
-        className="vh-100"
+      {/* Hero Section */}
+      <section
         style={{
+          position: "relative",
+          width: "100%",
+          height: "100vh",
+          overflow: "hidden",
           display: "flex",
-          flexDirection: "column",
           alignItems: "center",
-          maxWidth: "100%",
+          justifyContent: "center",
         }}
       >
-        <Row style={{ justifyContent: "center", width: "100%" }}>
-          <Col
-            xs={{ order: "last" }}
-            sm={{ order: "first" }}
-            style={{ display: "flex", justifyContent: "center" }}
-          >
-            <div
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            opacity: 0.6,
+            zIndex: 0,
+          }}
+          onError={(e) => {
+            console.error("Video error:", e);
+          }}
+        >
+          <source src="/denali_furling.mp4" type="video/mp4" />
+        </video>
+
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.3)",
+            zIndex: 1,
+          }}
+        />
+
+        <div
+          style={{
+            position: "relative",
+            zIndex: 2,
+            maxWidth: "1400px",
+            width: "100%",
+            padding: "0 2rem",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            justifyContent: "center",
+          }}
+        >
+          <RevealText delay={0.3} duration={1}>
+            <h1
               style={{
-                width: "80%",
-                marginTop: "20px",
-                justifyContent: "center",
+                fontSize: "clamp(3rem, 8vw, 7rem)",
+                fontWeight: 400,
+                color: designSystem.colors.textPrimary,
+                marginBottom: "1.5rem",
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+                fontFamily: designSystem.typography.fontFamily.heading,
               }}
             >
-              <h1
-                style={{
-                  color: font.color,
-                  textAlign: "left",
-                  fontSize: "60px",
-                }}
-              >
-                Hello.
-              </h1>
-              <h1
-                style={{
-                  color: font.color,
-                  marginBottom: "10px",
-                  // textAlign: "center",
-                  fontSize: "50px",
-                }}
-              >
-                Welcome to my website!
-              </h1>
-            </div>
-          </Col>
-          <Col
-            xs={{ order: "first" }}
-            sm={{ order: "last" }}
-            style={{ display: "flex", justifyContent: "center" }}
-          >
-            <img
+              <AnimatedText
+                text="I LIKE TO BUILD"
+                delay={0.5}
+                speed={80}
+                animateBy="word"
+              />
+            </h1>
+          </RevealText>
+
+          <RevealText delay={0.6} duration={1}>
+            <h1
               style={{
-                height: "300px",
-                width: "auto",
-                borderRadius: "20px",
+                fontSize: "clamp(3rem, 8vw, 7rem)",
+                fontWeight: 400,
+                color: designSystem.colors.textPrimary,
+                marginBottom: "2rem",
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+                fontFamily: designSystem.typography.fontFamily.heading,
               }}
-              alt=""
-              src={scubaProfile}
-            />
-          </Col>
-        </Row>
-        <Row style={{ margin: "20px", justifyContent: "center" }}>
-          <p
-            style={{
-              color: font.color,
-              margin: "10px",
-              textAlign: "center",
-              alignContent: "center",
-            }}
-          >
-            I'm Chace, a tech enthusiast who has lived and worked in Rhode
-            Island, San Francisco, and Raleigh, NC. My passion lies in robotics
-            and software development, where I love to create innovative
-            solutions. I thrive on collaboration, constantly seeking new
-            learning opportunities, and finding ways to assist others in their
-            endeavors. This website is a window into my professional journey,
-            showcasing my experiences, projects, and insights. Whether you're
-            here to learn about my work history, explore my projects, or connect
-            with me professionally, I'm delighted to have you visit. Feel free
-            to browse through my portfolio, and if you have any questions or
-            potential collaborations in mind, don't hesitate to reach out. Thank
-            you for stopping by, and I hope you find the information here
-            valuable for your needs.
-          </p>
-        </Row>
-      </div>
+            >
+              <AnimatedText
+                text="IMPOSSIBLE THINGS."
+                delay={1.5}
+                speed={80}
+                animateBy="word"
+              />
+            </h1>
+          </RevealText>
+
+          <RevealText delay={1.2} duration={1}>
+            <p
+              style={{
+                fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
+                fontWeight: 300,
+                color: designSystem.colors.textSecondary,
+                lineHeight: 1.6,
+                maxWidth: "600px",
+                marginTop: "1rem",
+                opacity: 0.9,
+              }}
+            >
+              <AnimatedText
+                text="With extreme practicality, I make crazy ideas real."
+                delay={2.5}
+                speed={50}
+                animateBy="letter"
+              />
+            </p>
+          </RevealText>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section
+        id="about"
+        style={{
+          minHeight: "100vh",
+          backgroundColor: designSystem.colors.background,
+          padding: "8rem 2rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "800px",
+            width: "100%",
+          }}
+        >
+          <TextReveal delay={0}>
+            <h2
+              style={{
+                fontSize: "clamp(2rem, 4vw, 3rem)",
+                fontWeight: 400,
+                color: designSystem.colors.textPrimary,
+                marginBottom: "3rem",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              About.
+            </h2>
+          </TextReveal>
+
+          <TextReveal delay={100}>
+            <p
+              style={{
+                fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
+                fontWeight: 300,
+                color: designSystem.colors.textSecondary,
+                lineHeight: 1.8,
+                marginBottom: "1.5rem",
+                opacity: 0.85,
+              }}
+            >
+              I'm Chace, a tech enthusiast who has lived and worked in Rhode
+              Island, San Francisco, and Raleigh, NC. My passion lies in robotics
+              and software development, where I love to create innovative
+              solutions. I thrive on collaboration, constantly seeking new
+              learning opportunities, and finding ways to assist others in their
+              endeavors.
+            </p>
+          </TextReveal>
+
+          <TextReveal delay={200}>
+            <p
+              style={{
+                fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
+                fontWeight: 300,
+                color: designSystem.colors.textSecondary,
+                lineHeight: 1.8,
+                marginBottom: "1.5rem",
+                opacity: 0.85,
+              }}
+            >
+              {ProfessionalContent.summary[0]}
+            </p>
+          </TextReveal>
+
+          <TextReveal delay={300}>
+            <p
+              style={{
+                fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
+                fontWeight: 300,
+                color: designSystem.colors.textSecondary,
+                lineHeight: 1.8,
+                opacity: 0.85,
+              }}
+            >
+              {ProfessionalContent.summary[1]}
+            </p>
+          </TextReveal>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section
+        id="projects"
+        style={{
+          minHeight: "100vh",
+          backgroundColor: designSystem.colors.background,
+          padding: "8rem 2rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1200px",
+            width: "100%",
+          }}
+        >
+          <TextReveal delay={0}>
+            <h2
+              style={{
+                fontSize: "clamp(2rem, 4vw, 3rem)",
+                fontWeight: 400,
+                color: designSystem.colors.textPrimary,
+                marginBottom: "4rem",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Projects.
+            </h2>
+          </TextReveal>
+
+          {ProfessionalContent.content.map((project, index) => (
+            <TextReveal key={index} delay={index * 100}>
+              <div
+                style={{
+                  marginBottom: "6rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "2rem",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "1rem",
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
+                      fontWeight: 400,
+                      color: designSystem.colors.textPrimary,
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    {project.heading}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "clamp(1rem, 1.3vw, 1.1rem)",
+                      fontWeight: 300,
+                      color: designSystem.colors.textSecondary,
+                      lineHeight: 1.8,
+                      opacity: 0.85,
+                      maxWidth: "800px",
+                    }}
+                  >
+                    {project.body}
+                  </p>
+                  {project.links?.map((link, linkIndex) => (
+                    <a
+                      key={linkIndex}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        color: designSystem.colors.textPrimary,
+                        textDecoration: "none",
+                        fontSize: "clamp(0.9rem, 1.2vw, 1rem)",
+                        opacity: 0.7,
+                        transition: "opacity 0.3s ease",
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+                      onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
+                    >
+                      {link.label} →
+                    </a>
+                  ))}
+                </div>
+
+                {project.images && project.images.length > 0 && (
+                  <div
+                    style={{
+                      width: "100%",
+                      maxWidth: "800px",
+                      borderRadius: "8px",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <Carousel pause="hover" interval={null} data-bs-theme="dark">
+                      {project.images.map((image: any, imgIndex: number) => (
+                        <Carousel.Item key={imgIndex}>
+                          <img
+                            src={image}
+                            alt={`${project.heading} - Image ${imgIndex + 1}`}
+                            style={{
+                              width: "100%",
+                              height: "auto",
+                              display: "block",
+                            }}
+                          />
+                        </Carousel.Item>
+                      ))}
+                    </Carousel>
+                  </div>
+                )}
+              </div>
+            </TextReveal>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section
+        id="contact"
+        style={{
+          minHeight: "100vh",
+          backgroundColor: designSystem.colors.background,
+          padding: "8rem 2rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "800px",
+            width: "100%",
+            textAlign: "center",
+          }}
+        >
+          <TextReveal delay={0}>
+            <h2
+              style={{
+                fontSize: "clamp(2rem, 4vw, 3rem)",
+                fontWeight: 400,
+                color: designSystem.colors.textPrimary,
+                marginBottom: "1rem",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Contact.
+            </h2>
+          </TextReveal>
+
+          <TextReveal delay={100}>
+            <p
+              style={{
+                fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
+                fontWeight: 300,
+                color: designSystem.colors.textSecondary,
+                lineHeight: 1.8,
+                marginBottom: "3rem",
+                opacity: 0.85,
+              }}
+            >
+              Shoot me an email if you want to connect! You can also find me on
+              LinkedIn or GitHub if that's more your speed.
+            </p>
+          </TextReveal>
+
+          <TextReveal delay={200}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                gap: "3rem",
+                flexWrap: "wrap",
+              }}
+            >
+              <OverlayTrigger
+                placement="bottom"
+                delay={{ show: 250, hide: 1000000 }}
+                overlay={renderTooltip}
+              >
+                <div
+                  style={{
+                    cursor: "pointer",
+                    opacity: 0.7,
+                    transition: "opacity 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
+                >
+                  <Gmail />
+                </div>
+              </OverlayTrigger>
+
+              <div
+                style={{
+                  cursor: "pointer",
+                  opacity: 0.7,
+                  transition: "opacity 0.3s ease",
+                }}
+                onClick={() => {
+                  window.open("https://www.linkedin.com/in/chace-medeiros/");
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
+              >
+                <LinkedIn />
+              </div>
+
+              <div
+                style={{
+                  cursor: "pointer",
+                  opacity: 0.7,
+                  transition: "opacity 0.3s ease",
+                }}
+                onClick={() => {
+                  window.open("https://github.com/chacebot");
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
+              >
+                <Github />
+              </div>
+            </div>
+          </TextReveal>
+        </div>
+      </section>
     </>
   );
 };

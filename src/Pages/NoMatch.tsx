@@ -1,30 +1,93 @@
-import font from "../Styles/variables";
+import Container from "react-bootstrap/Container";
+import { Link } from "react-router-dom";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 export const NoMatch = () => {
+  const [contentRef, contentVisible] = useScrollAnimation({ threshold: 0.2 });
+
   return (
-    <>
-      <div
-        className="vh-100"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          width: "100%",
-        }}
-      >
-        <div style={{ height: "60%", display: "flex", alignItems: "center" }}>
+    <Container fluid style={{ padding: 0 }} className="page-transition">
+      <div style={{ 
+        maxWidth: "1400px",
+        margin: "0 auto",
+        padding: "8rem 2rem 6rem 2rem",
+      }}>
+        <div
+          ref={contentRef as any}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            justifyContent: "center",
+            minHeight: "60vh",
+            opacity: contentVisible ? 1 : 0,
+            transform: contentVisible ? "translateY(0)" : "translateY(30px)",
+            transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
+          }}
+        >
           <h1
             style={{
-              color: font.color,
-              marginBottom: "10px",
-              textAlign: "center",
-              justifyContent: "center",
+              fontSize: "clamp(3rem, 6vw, 5rem)",
+              fontWeight: 400,
+              lineHeight: 1.2,
+              color: "#ffffff",
+              marginBottom: "1rem",
+              letterSpacing: "-0.03em",
             }}
           >
-            No such page exists.
+            404
           </h1>
+          <h2
+            style={{
+              fontSize: "clamp(1.5rem, 3vw, 2rem)",
+              fontWeight: 400,
+              lineHeight: 1.3,
+              color: "#cccccc",
+              marginBottom: "2rem",
+            }}
+          >
+            Page not found
+          </h2>
+          <p
+            style={{
+              fontSize: "1.125rem",
+              lineHeight: 1.8,
+              color: "#cccccc",
+              marginBottom: "3rem",
+              maxWidth: "500px",
+              fontWeight: 300,
+            }}
+          >
+            The page you're looking for doesn't exist or has been moved.
+          </p>
+          <Link
+            to="/"
+            style={{
+              display: "inline-block",
+              padding: "0.75rem 0",
+              color: "#ffffff",
+              textDecoration: "none",
+              fontWeight: 400,
+              borderBottom: "1px solid #1a1a1a",
+              transition: "border-color 250ms ease-in-out",
+              fontSize: "0.875rem",
+              letterSpacing: "0.05em",
+              textTransform: "uppercase",
+              opacity: 0.7,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderBottomColor = "#ffffff";
+              e.currentTarget.style.opacity = "1";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderBottomColor = "#1a1a1a";
+              e.currentTarget.style.opacity = "0.7";
+            }}
+          >
+            Go Home
+          </Link>
         </div>
       </div>
-    </>
+    </Container>
   );
 };

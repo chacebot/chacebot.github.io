@@ -1,17 +1,451 @@
+/* Modern Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #ffffff;
+  background-color: #000000;
+  overflow-x: hidden;
+}
+
+/* Navigation Styles - Minimalist */
+.nav-link {
+  transition: opacity 250ms ease-in-out;
+  font-weight: 400;
+  color: #ffffff !important;
+  position: relative;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.nav-link:hover {
+  opacity: 1;
+  color: #ffffff !important;
+}
+
 .nav-link.active {
+  opacity: 1;
+  color: #ffffff !important;
+  font-weight: 400;
+}
+
+.nav-link.active::after {
+  display: none;
+}
+
+/* Modern Card Styles - Minimalist dark */
+.card {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  transition: opacity 250ms ease-in-out;
+  overflow: hidden;
+  background: transparent;
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+}
+
+.card:hover {
+  opacity: 0.8;
+}
+
+.card-title {
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.card-text {
+  color: #cccccc;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.card-link {
+  color: #0f3460;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 250ms ease-in-out;
+}
+
+.card-link:hover {
+  color: #e94560;
   text-decoration: underline;
 }
 
+/* Carousel Styles - Dark theme */
+.carousel {
+  transition: opacity 0.6s ease-in-out;
+}
+
+.carousel-item {
+  transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  padding: 0.5rem;
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.carousel-indicators button {
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-indicators button:hover {
+  transform: scale(1.2);
+}
+
+.carousel-indicators button.active {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Tooltip Styles - Dark theme */
 .email-tooltip {
-  background-color: rgb(255, 0, 0);
+  background-color: #1a1a1a;
 }
 
 #email-tooltip > .tooltip-inner {
-  background-color: #fff;
-  color: #000;
-  border: 1px solid #062e56;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid #1a1a1a;
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+  font-weight: 400;
+  font-size: 0.875rem;
 }
 
-/* #email-tooltip > .tooltip-arrow {
-  background-color: rgb(255, 255, 255);
-} */
+/* Button and Link Styles - Dark theme */
+a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 250ms ease-in-out, border-color 250ms ease-in-out;
+  opacity: 0.7;
+}
+
+a:hover {
+  opacity: 1;
+  color: #ffffff;
+}
+
+/* Smooth Transitions */
+img {
+  transition: transform 250ms ease-in-out, opacity 250ms ease-in-out;
+}
+
+img:hover {
+  opacity: 0.95;
+}
+
+/* Responsive Typography - Bold and large */
+h1 {
+  font-weight: 400;
+  line-height: 1.2;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-weight: 400;
+  line-height: 1.3;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+p {
+  line-height: 1.8;
+  color: #cccccc;
+  font-weight: 300;
+}
+
+/* Utilities */
+.text-primary {
+  color: #ffffff !important;
+}
+
+.text-secondary {
+  color: #cccccc !important;
+}
+
+.bg-light {
+  background-color: #000000 !important;
+}
+
+/* Scrollbar styling for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #222222;
+}
+
+/* ============================================
+   ANIMATIONS & TRANSITIONS
+   ============================================ */
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes textReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Animation Classes */
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-out forwards;
+  /* Note: opacity starts at 0 for animation, but should complete to 1 */
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.scale-in {
+  animation: scaleIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Staggered Animation Delays */
+.fade-in-up-delay-1 {
+  animation: fadeInUp 0.8s ease-out 0.1s forwards;
+  opacity: 0;
+}
+
+.fade-in-up-delay-2 {
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.fade-in-up-delay-3 {
+  animation: fadeInUp 0.8s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.fade-in-up-delay-4 {
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.fade-in-delay-1 {
+  animation: fadeIn 1s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.fade-in-delay-2 {
+  animation: fadeIn 1s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.fade-in-delay-3 {
+  animation: fadeIn 1s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+/* Scroll-triggered animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced Hover Effects */
+.nav-link {
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover {
+  transform: translateY(-2px);
+}
+
+/* Card Hover Enhancements */
+.card {
+  transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1), transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Image Animations */
+img {
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1), opacity 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+img:hover {
+  transform: scale(1.02);
+}
+
+/* Smooth Link Transitions */
+a {
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), border-color 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a:hover {
+  transform: translateX(4px);
+}
+
+/* Button/Link hover with underline animation */
+.hover-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #ffffff;
+  transition: width 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-underline:hover::after {
+  width: 100%;
+}
+
+/* Text reveal animation for hero */
+.hero-text {
+  overflow: hidden;
+}
+
+.hero-text span {
+  display: inline-block;
+  animation: textReveal 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Smooth page transitions */
+.page-transition {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Loading shimmer effect (optional) */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
