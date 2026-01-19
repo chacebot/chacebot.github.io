@@ -459,6 +459,7 @@ export const Home = () => {
                   display: "flex",
                   flexDirection: "column",
                   gap: "2rem",
+                  width: "100%",
                 }}
               >
                 <div
@@ -466,6 +467,7 @@ export const Home = () => {
                     display: "flex",
                     flexDirection: "column",
                     gap: "1rem",
+                    width: "100%",
                   }}
                 >
                   <h3
@@ -485,7 +487,7 @@ export const Home = () => {
                       color: designSystem.colors.textSecondary,
                       lineHeight: 1.8,
                       opacity: 0.85,
-                      maxWidth: "800px",
+                      width: "100%",
                     }}
                   >
                     {project.body}
@@ -515,7 +517,6 @@ export const Home = () => {
                   <div
                     style={{
                       width: "100%",
-                      maxWidth: "800px",
                       borderRadius: "8px",
                       overflow: "hidden",
                     }}
