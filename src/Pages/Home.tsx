@@ -181,7 +181,7 @@ export const Home = () => {
       >
         <div
           style={{
-            maxWidth: "800px",
+            maxWidth: "1200px",
             width: "100%",
           }}
         >
@@ -482,7 +482,7 @@ export const Home = () => {
       >
         <div
           style={{
-            maxWidth: "800px",
+            maxWidth: "1200px",
             width: "100%",
             textAlign: "center",
           }}
