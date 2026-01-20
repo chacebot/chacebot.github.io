@@ -31,15 +31,18 @@ export const RevealText = ({
   const getTransform = () => {
     switch (direction) {
       case 'up':
-        return isVisible ? 'translateY(0)' : 'translateY(30px)';
+        // Subtle animation from below with slight scale
+        return isVisible ? 'translateY(0) scale(1)' : 'translateY(15px) scale(0.98)';
       case 'down':
-        return isVisible ? 'translateY(0)' : 'translateY(-30px)';
+        // Subtle animation from above with slight scale
+        return isVisible ? 'translateY(0) scale(1)' : 'translateY(-15px) scale(0.98)';
       case 'left':
-        return isVisible ? 'translateX(0)' : 'translateX(30px)';
+        return isVisible ? 'translateX(0) scale(1)' : 'translateX(15px) scale(0.98)';
       case 'right':
-        return isVisible ? 'translateX(0)' : 'translateX(-30px)';
+        return isVisible ? 'translateX(0) scale(1)' : 'translateX(-15px) scale(0.98)';
       default:
-        return isVisible ? 'translateY(0)' : 'translateY(30px)';
+        // Default: subtle animation from below
+        return isVisible ? 'translateY(0) scale(1)' : 'translateY(15px) scale(0.98)';
     }
   };
 
@@ -51,7 +54,7 @@ export const RevealText = ({
         ...style,
         opacity: isVisible ? 1 : 0,
         transform: getTransform(),
-        transition: `opacity ${duration}s cubic-bezier(0.4, 0, 0.2, 1), transform ${duration}s cubic-bezier(0.4, 0, 0.2, 1)`,
+        transition: `opacity ${duration}s cubic-bezier(0.16, 1, 0.3, 1), transform ${duration}s cubic-bezier(0.16, 1, 0.3, 1)`,
       }}
     >
       {children}

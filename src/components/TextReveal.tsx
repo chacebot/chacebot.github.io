@@ -49,8 +49,9 @@ export const TextReveal = ({
     >
       <div
         style={{
-          transform: isVisible ? 'translateY(0)' : 'translateY(100%)',
-          transition: `transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${delay}ms`,
+          transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(15px) scale(0.98)',
+          opacity: isVisible ? 1 : 0,
+          transition: `transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
         }}
       >
         {children}

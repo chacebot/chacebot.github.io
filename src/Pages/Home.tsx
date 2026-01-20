@@ -127,26 +127,19 @@ export const Home = () => {
             justifyContent: "center",
           }}
         >
-          <RevealText delay={0.3} duration={1}>
-            <h1
-              style={{
-                fontSize: "clamp(3rem, 8vw, 7rem)",
-                fontWeight: 400,
-                color: designSystem.colors.textPrimary,
-                marginBottom: "1.5rem",
-                lineHeight: 1.1,
-                letterSpacing: "-0.02em",
-                fontFamily: designSystem.typography.fontFamily.heading,
-              }}
-            >
-              <AnimatedText
-                text="COMMUNITY. CRAFTMANSHIP. QUALITY."
-                delay={0.5}
-                speed={80}
-                animateBy="word"
-              />
-            </h1>
-          </RevealText>
+          <h1
+            style={{
+              fontSize: "clamp(3rem, 8vw, 7rem)",
+              fontWeight: 400,
+              color: designSystem.colors.textPrimary,
+              marginBottom: "1.5rem",
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              fontFamily: designSystem.typography.fontFamily.heading,
+            }}
+          >
+            COMMUNITY. CRAFTMANSHIP. QUALITY.
+          </h1>
 
           <RevealText delay={1.2} duration={1}>
             <p
