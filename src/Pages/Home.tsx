@@ -2,6 +2,7 @@ import { AnimatedText } from "../components/AnimatedText";
 import { RevealText } from "../components/RevealText";
 import { TextReveal } from "../components/TextReveal";
 import { SectionTitle } from "../components/SectionTitle";
+import { BlockReveal } from "../components/BlockReveal";
 import { DropCap } from "../components/DropCap";
 import { designSystem } from "../Styles/variables";
 import { useEffect, useRef } from "react";
@@ -138,7 +139,7 @@ export const Home = () => {
               fontFamily: designSystem.typography.fontFamily.heading,
             }}
           >
-            COMMUNITY. CRAFTMANSHIP. QUALITY.
+            COMMUNITY. CRAFTMANSHIP. CALIBER.
           </h1>
 
           <RevealText delay={1.2} duration={1}>
@@ -182,11 +183,9 @@ export const Home = () => {
             width: "100%",
           }}
         >
-          <TextReveal delay={0}>
-            <SectionTitle>About</SectionTitle>
-          </TextReveal>
+          <SectionTitle>About</SectionTitle>
 
-          <TextReveal delay={100}>
+          <BlockReveal delay={0} direction="left">
             <p
               style={{
                 fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
@@ -206,9 +205,9 @@ export const Home = () => {
                 endeavors.
               </DropCap>
             </p>
-          </TextReveal>
+          </BlockReveal>
 
-          <TextReveal delay={200}>
+          <BlockReveal delay={100} direction="left">
             <p
               style={{
                 fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
@@ -221,9 +220,9 @@ export const Home = () => {
             >
               {ProfessionalContent.summary[0]}
             </p>
-          </TextReveal>
+          </BlockReveal>
 
-          <TextReveal delay={300}>
+          <BlockReveal delay={200} direction="left">
             <p
               style={{
                 fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
@@ -236,9 +235,9 @@ export const Home = () => {
             >
               {ProfessionalContent.summary[1]}
             </p>
-          </TextReveal>
+          </BlockReveal>
 
-          <TextReveal delay={400}>
+          <BlockReveal delay={300} direction="left">
             <p
               style={{
                 fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
@@ -259,7 +258,7 @@ export const Home = () => {
               tackle larger, more ambitious projects that would otherwise require
               extensive time and resources.
             </p>
-          </TextReveal>
+          </BlockReveal>
 
           {/* Skills sections */}
           <TextReveal delay={500}>
@@ -371,39 +370,38 @@ export const Home = () => {
             width: "100%",
           }}
         >
-          <TextReveal delay={0}>
-            <SectionTitle>Projects</SectionTitle>
-          </TextReveal>
+          <SectionTitle>Projects</SectionTitle>
 
           {ProfessionalContent.content.map((project, index) => (
-            <TextReveal key={index} delay={index * 100}>
+            <div
+              key={index}
+              style={{
+                marginBottom: "6rem",
+                display: "flex",
+                flexDirection: "column",
+                gap: "2rem",
+                width: "100%",
+              }}
+            >
               <div
                 style={{
-                  marginBottom: "6rem",
                   display: "flex",
                   flexDirection: "column",
-                  gap: "2rem",
+                  gap: "1rem",
                   width: "100%",
                 }}
               >
-                <div
+                <h3
                   style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "1rem",
-                    width: "100%",
+                    fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
+                    fontWeight: 400,
+                    color: designSystem.colors.textPrimary,
+                    marginBottom: "0.5rem",
                   }}
                 >
-                  <h3
-                    style={{
-                      fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
-                      fontWeight: 400,
-                      color: designSystem.colors.textPrimary,
-                      marginBottom: "0.5rem",
-                    }}
-                  >
-                    {project.heading}
-                  </h3>
+                  {project.heading}
+                </h3>
+                <BlockReveal delay={index * 100} direction="left">
                   <p
                     style={{
                       fontSize: "clamp(1rem, 1.3vw, 1.1rem)",
@@ -416,6 +414,7 @@ export const Home = () => {
                   >
                     {project.body}
                   </p>
+                </BlockReveal>
                   {project.links?.map((link, linkIndex) => (
                     <a
                       key={linkIndex}
@@ -463,8 +462,7 @@ export const Home = () => {
                   </div>
                 )}
               </div>
-            </TextReveal>
-          ))}
+            ))}
         </div>
       </section>
 
@@ -487,11 +485,9 @@ export const Home = () => {
             textAlign: "center",
           }}
         >
-          <TextReveal delay={0}>
-            <SectionTitle>Contact</SectionTitle>
-          </TextReveal>
+          <SectionTitle>Contact</SectionTitle>
 
-          <TextReveal delay={100}>
+          <BlockReveal delay={100} direction="left">
             <p
               style={{
                 fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
@@ -505,7 +501,7 @@ export const Home = () => {
               Shoot me an email if you want to connect! You can also find me on
               LinkedIn or GitHub if that's more your speed.
             </p>
-          </TextReveal>
+          </BlockReveal>
 
           <TextReveal delay={200}>
             <div

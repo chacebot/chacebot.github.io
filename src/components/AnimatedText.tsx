@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSectionReveal } from './SectionReveal';
 
 interface AnimatedTextProps {
   text: string;
@@ -8,6 +9,7 @@ interface AnimatedTextProps {
   style?: React.CSSProperties;
   animateBy?: 'letter' | 'word';
   onComplete?: () => void;
+  shouldStart?: boolean;
 }
 
 export const AnimatedText = ({
@@ -18,11 +20,19 @@ export const AnimatedText = ({
   style,
   animateBy = 'word',
   onComplete,
+  shouldStart: shouldStartProp,
 }: AnimatedTextProps) => {
+  const { shouldStart: shouldStartFromContext } = useSectionReveal();
+  const shouldStart = shouldStartProp !== undefined ? shouldStartProp : shouldStartFromContext;
+  
   const [displayedText, setDisplayedText] = useState('');
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
+    if (!shouldStart) {
+      return;
+    }
+
     setDisplayedText('');
     setIsComplete(false);
 
@@ -64,7 +74,7 @@ export const AnimatedText = ({
       cleanup = startAnimation();
       return cleanup;
     }
-  }, [text, delay, speed, animateBy, onComplete]);
+  }, [text, delay, speed, animateBy, onComplete, shouldStart]);
 
   // Add a cursor effect while animating
   const cursor = !isComplete ? (
