@@ -87,13 +87,13 @@ export const Home = () => {
             position: "absolute",
             top: 0,
             left: 0,
-            width: "125%",
+            width: "133.33%",
             height: "100%",
             objectFit: "cover",
-            objectPosition: "left center",
+            objectPosition: "center center",
             opacity: 0.6,
             zIndex: 0,
-            clipPath: "inset(0 20% 0 0)",
+            clipPath: "inset(0 25% 0 0)",
           }}
           onError={(e) => {
             console.error("Video error:", e);

@@ -449,3 +449,6 @@ a:hover {
   background-size: 1000px 100%;
   animation: shimmer 2s infinite;
 }
+
+/* Full-screen menu overlay styles */
+/* Menu overlay is handled inline in the component */
