@@ -139,7 +139,9 @@ export const Home = () => {
               fontFamily: designSystem.typography.fontFamily.heading,
             }}
           >
-            COMMUNITY. CRAFTMANSHIP. CALIBER.
+            <div>COMMUNITY.</div>
+            <div>CRAFTSMANSHIP.</div>
+            <div>CALIBER.</div>
           </h1>
 
           <RevealText delay={1.2} duration={1}>
