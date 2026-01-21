@@ -65,16 +65,21 @@ const NavBar = () => {
           paddingTop: "1.5rem",
           paddingBottom: isMobile ? "calc(1.5rem + env(safe-area-inset-bottom, 20px))" : "1.5rem",
           zIndex: 10000,
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          maxWidth: "1400px",
-          margin: "0 auto",
-          paddingLeft: "2rem",
-          paddingRight: "2rem",
+          width: "100%",
           willChange: "transform",
         }}
       >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            maxWidth: "1400px",
+            margin: "0 auto",
+            paddingLeft: "2rem",
+            paddingRight: "2rem",
+          }}
+        >
         <div
           onClick={scrollToTop}
           style={{
@@ -219,6 +224,7 @@ const NavBar = () => {
             </svg>
           </button>
         )}
+        </div>
       </nav>
 
       {/* Full-screen menu overlay - mobile only */}
