@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 992);
+  const navRef = useRef<HTMLElement>(null);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -53,9 +54,56 @@ const NavBar = () => {
     };
   }, [isMenuOpen, isMobile]);
 
+  // Lock navbar height on mobile to prevent Chrome iOS expansion
+  useEffect(() => {
+    if (!navRef.current || !isMobile) return;
+
+    const nav = navRef.current;
+    let lockedHeight: number | null = null;
+
+    const lockHeight = () => {
+      if (!lockedHeight) {
+        // Measure height including all padding
+        const computedStyle = window.getComputedStyle(nav);
+        const paddingTop = parseFloat(computedStyle.paddingTop);
+        const paddingBottom = parseFloat(computedStyle.paddingBottom);
+        const contentHeight = nav.scrollHeight - paddingTop - paddingBottom;
+        lockedHeight = contentHeight + paddingTop + paddingBottom;
+        nav.style.height = `${lockedHeight}px`;
+        nav.style.minHeight = `${lockedHeight}px`;
+        nav.style.maxHeight = `${lockedHeight}px`;
+      }
+    };
+
+    // Lock height after initial render - give more time for layout
+    const timeoutId = setTimeout(lockHeight, 200);
+
+    // Prevent resize observer from changing height
+    const resizeObserver = new ResizeObserver((entries) => {
+      if (lockedHeight && nav.style.height !== `${lockedHeight}px`) {
+        nav.style.height = `${lockedHeight}px`;
+        nav.style.minHeight = `${lockedHeight}px`;
+        nav.style.maxHeight = `${lockedHeight}px`;
+      }
+    });
+
+    resizeObserver.observe(nav);
+
+    return () => {
+      clearTimeout(timeoutId);
+      resizeObserver.disconnect();
+      if (nav) {
+        nav.style.height = "";
+        nav.style.minHeight = "";
+        nav.style.maxHeight = "";
+      }
+    };
+  }, [isMobile]);
+
   return (
     <>
       <nav
+        ref={navRef}
         style={{
           position: "sticky",
           top: 0,
@@ -63,11 +111,15 @@ const NavBar = () => {
           backdropFilter: "blur(10px)",
           borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
           paddingTop: "1.5rem",
-          paddingBottom: isMobile ? "calc(1.5rem + env(safe-area-inset-bottom, 20px))" : "1.5rem",
+          paddingBottom: isMobile ? "1.5rem" : "1.5rem",
+          minHeight: isMobile ? "auto" : "auto",
           zIndex: 10000,
           width: "100%",
           willChange: "transform",
+          flexShrink: 0,
+          boxSizing: "border-box",
         }}
+        className="navbar-fixed-height"
       >
         <div
           style={{
@@ -78,6 +130,7 @@ const NavBar = () => {
             margin: "0 auto",
             paddingLeft: "2rem",
             paddingRight: "2rem",
+            minHeight: "1.5rem",
           }}
         >
         <div
@@ -91,6 +144,9 @@ const NavBar = () => {
             textTransform: "uppercase",
             opacity: 0.9,
             cursor: "pointer",
+            lineHeight: "1.5",
+            paddingTop: "0.25rem",
+            paddingBottom: "0.25rem",
           }}
         >
           Chace Medeiros
@@ -230,12 +286,12 @@ const NavBar = () => {
       {/* Full-screen menu overlay - mobile only */}
       {isMobile && (
         <div
+          className="mobile-menu-overlay"
           style={{
             position: "fixed",
             top: 0,
             left: 0,
             width: "100vw",
-            height: "100vh",
             backgroundColor: "#000000",
             zIndex: 9999,
             display: isMenuOpen ? "flex" : "none",
@@ -294,7 +350,7 @@ const NavBar = () => {
             justifyContent: "flex-end",
             alignItems: "flex-start",
             padding: "2rem",
-            paddingBottom: "calc(2rem + env(safe-area-inset-bottom, 20px))",
+            paddingBottom: isMobile ? "calc(2rem + env(safe-area-inset-bottom, 0px) + 50px)" : "2rem",
             gap: "3rem",
           }}
         >

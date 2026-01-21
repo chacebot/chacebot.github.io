@@ -5,6 +5,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* Prevent iOS viewport resize on scroll */
+  height: 100%;
+  height: -webkit-fill-available;
 }
 
 body {
@@ -16,6 +19,9 @@ body {
   color: #ffffff;
   background-color: #000000;
   overflow-x: hidden;
+  /* Prevent iOS viewport resize on scroll */
+  min-height: 100%;
+  min-height: -webkit-fill-available;
 }
 
 /* Navigation Styles - Minimalist */
@@ -451,4 +457,89 @@ a:hover {
 }
 
 /* Full-screen menu overlay styles */
-/* Menu overlay is handled inline in the component */
+.mobile-menu-overlay {
+  /* Ensure menu overlay accounts for iOS Chrome browser UI */
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for iOS Chrome */
+  max-height: 100vh;
+  max-height: 100dvh;
+}
+
+@media (max-width: 991.98px) {
+  .mobile-menu-overlay {
+    /* Add extra padding at bottom for iOS Chrome browser UI */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+/* Fix navbar expansion on iOS scroll */
+nav {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: -webkit-sticky;
+  position: sticky;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+/* Prevent navbar expansion on Chrome iOS - lock height */
+.navbar-fixed-height {
+  height: auto;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-fixed-height {
+    /* Lock to content height + padding, prevent expansion */
+    height: fit-content;
+    min-height: fit-content;
+    max-height: fit-content;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+    overflow: hidden;
+    /* Prevent Chrome iOS from recalculating on scroll */
+    contain: layout style;
+  }
+  
+  /* Ensure inner content doesn't expand navbar */
+  .navbar-fixed-height > div {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    flex-shrink: 0;
+  }
+}
+
+/* Prevent iOS viewport resize issues - lock navbar height */
+@supports (-webkit-touch-callout: none) {
+  nav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+  
+  /* Lock navbar to prevent expansion on iOS Chrome scroll */
+  @media (max-width: 991.98px) {
+    .navbar-fixed-height {
+      /* Use contain to prevent layout shifts */
+      contain: layout style size !important;
+      padding-top: 1.5rem !important;
+      padding-bottom: 1.5rem !important;
+    }
+  }
+}
+
+/* Chrome-specific fix for iOS */
+@supports (-webkit-appearance: none) {
+  @media (max-width: 991.98px) {
+    .navbar-fixed-height {
+      /* Prevent Chrome iOS from expanding navbar on scroll */
+      contain: layout style size;
+      will-change: auto;
+    }
+  }
+}
