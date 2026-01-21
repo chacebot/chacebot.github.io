@@ -63,7 +63,7 @@ const NavBar = () => {
           backdropFilter: "blur(10px)",
           borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
           paddingTop: "1.5rem",
-          paddingBottom: "1.5rem",
+          paddingBottom: isMobile ? "calc(1.5rem + env(safe-area-inset-bottom, 20px))" : "1.5rem",
           zIndex: 10000,
           display: "flex",
           justifyContent: "space-between",
@@ -288,6 +288,7 @@ const NavBar = () => {
             justifyContent: "flex-end",
             alignItems: "flex-start",
             padding: "2rem",
+            paddingBottom: "calc(2rem + env(safe-area-inset-bottom, 20px))",
             gap: "3rem",
           }}
         >

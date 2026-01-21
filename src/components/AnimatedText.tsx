@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useSectionReveal } from './SectionReveal';
 
 interface AnimatedTextProps {
   text: string;
@@ -20,10 +19,8 @@ export const AnimatedText = ({
   style,
   animateBy = 'word',
   onComplete,
-  shouldStart: shouldStartProp,
+  shouldStart = true,
 }: AnimatedTextProps) => {
-  const { shouldStart: shouldStartFromContext } = useSectionReveal();
-  const shouldStart = shouldStartProp !== undefined ? shouldStartProp : shouldStartFromContext;
   
   const [displayedText, setDisplayedText] = useState('');
   const [isComplete, setIsComplete] = useState(false);

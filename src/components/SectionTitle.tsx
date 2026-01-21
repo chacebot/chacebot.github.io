@@ -35,15 +35,6 @@ export const SectionTitle = ({
       </h2>
       <div
         style={{
-          width: "8px",
-          height: "8px",
-          borderRadius: "50%",
-          backgroundColor: designSystem.colors.accent,
-          marginRight: "1rem",
-        }}
-      />
-      <div
-        style={{
           flex: 1,
           height: "1px",
           backgroundColor: "rgba(255, 255, 255, 0.2)",

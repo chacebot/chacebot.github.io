@@ -130,13 +130,14 @@ export const Home = () => {
         >
           <h1
             style={{
-              fontSize: "clamp(3rem, 8vw, 7rem)",
+              fontSize: "clamp(2rem, 6vw, 7rem)",
               fontWeight: 400,
               color: designSystem.colors.textPrimary,
               marginBottom: "1.5rem",
               lineHeight: 1.1,
               letterSpacing: "-0.02em",
               fontFamily: designSystem.typography.fontFamily.heading,
+              wordBreak: "break-word",
             }}
           >
             <div>COMMUNITY.</div>
@@ -187,7 +188,7 @@ export const Home = () => {
         >
           <SectionTitle>About</SectionTitle>
 
-          <BlockReveal delay={0} direction="left">
+          <BlockReveal delay={0} direction="right">
             <p
               style={{
                 fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
@@ -209,7 +210,7 @@ export const Home = () => {
             </p>
           </BlockReveal>
 
-          <BlockReveal delay={100} direction="left">
+          <BlockReveal delay={100} direction="right">
             <p
               style={{
                 fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
@@ -224,7 +225,7 @@ export const Home = () => {
             </p>
           </BlockReveal>
 
-          <BlockReveal delay={200} direction="left">
+          <BlockReveal delay={200} direction="right">
             <p
               style={{
                 fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
@@ -239,7 +240,7 @@ export const Home = () => {
             </p>
           </BlockReveal>
 
-          <BlockReveal delay={300} direction="left">
+          <BlockReveal delay={300} direction="right">
             <p
               style={{
                 fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
@@ -403,7 +404,7 @@ export const Home = () => {
                 >
                   {project.heading}
                 </h3>
-                <BlockReveal delay={index * 100} direction="left">
+                <BlockReveal delay={index * 100} direction="right">
                   <p
                     style={{
                       fontSize: "clamp(1rem, 1.3vw, 1.1rem)",
@@ -489,7 +490,7 @@ export const Home = () => {
         >
           <SectionTitle>Contact</SectionTitle>
 
-          <BlockReveal delay={100} direction="left">
+          <BlockReveal delay={100} direction="right">
             <p
               style={{
                 fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
