@@ -5,11 +5,12 @@ Personal portfolio website for Chace Medeiros, built with React and TypeScript.
 ## Tech Stack
 
 - **React** 18.2.0 - UI framework
-- **TypeScript** 4.9.5 - Type safety
+- **TypeScript** 5.x - Type safety
+- **Vite** 5.x - Build tooling and development server
+- **Vitest** 1.x - Testing framework
 - **React Router** 6.21.1 - Client-side routing
 - **React Bootstrap** 2.9.2 - UI components
 - **Bootstrap** 5.3.2 - CSS framework
-- **React Scripts** 5.0.1 - Build tooling (Create React App)
 
 ## Project Structure
 
@@ -56,10 +57,11 @@ src/
 
 ### Development Dependencies
 
+- `vite` - Build tooling and development server
+- `vitest` - Testing framework
 - `gh-pages` - GitHub Pages deployment
 - `@testing-library/*` - Testing utilities
 - `typescript` - TypeScript compiler
-- `react-scripts` - Build and development tooling
 
 ## Getting Started
 
@@ -79,6 +81,8 @@ npm install
 Start the development server:
 
 ```bash
+npm run dev
+# or
 npm start
 ```
 
@@ -125,7 +129,9 @@ This will:
 
 ## Scripts
 
-- `npm start` - Start development server
+- `npm run dev` / `npm start` - Start development server
 - `npm run build` - Create production build
+- `npm run preview` - Preview production build locally
 - `npm test` - Run tests
+- `npm run test:watch` - Run tests in watch mode
 - `npm run deploy` - Build and deploy to GitHub Pages
