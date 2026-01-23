@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface RevealTextProps {
   children: React.ReactNode;
@@ -18,7 +18,6 @@ export const RevealText = ({
   direction = 'up',
 }: RevealTextProps) => {
   const [isVisible, setIsVisible] = useState(false);
-  const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -48,7 +47,6 @@ export const RevealText = ({
 
   return (
     <div
-      ref={elementRef}
       className={className}
       style={{
         ...style,

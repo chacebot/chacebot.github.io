@@ -13,7 +13,7 @@ export const NoMatch = () => {
         padding: "8rem 2rem 6rem 2rem",
       }}>
         <div
-          ref={contentRef as any}
+          ref={contentRef}
           style={{
             display: "flex",
             flexDirection: "column",

@@ -5,7 +5,7 @@ import {PoopDetection} from "./PoopDetection/PoopDetection"
 import { PageInfo } from "../../Common/ContentStructure"
 
 export const ProfessionalContent: PageInfo = {
-    headding: "A glimpse into my work.",    
+    heading: "A glimpse into my work.",    
     summary: [`I am a seasoned professional with a passion for robotics and
     software development, specializing in Perception, Motion
     Control, and Manipulation.`,

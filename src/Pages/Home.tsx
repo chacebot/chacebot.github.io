@@ -11,7 +11,7 @@ import { Gmail } from "../Content/Contact/Icons/Gmail";
 import { LinkedIn } from "../Content/Contact/Icons/LinkedIn";
 import { Github } from "../Content/Contact/Icons/Github";
 import Carousel from "react-bootstrap/Carousel";
-import Tooltip from "react-bootstrap/Tooltip";
+import Tooltip, { TooltipProps } from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 export const Home = () => {
@@ -19,13 +19,17 @@ export const Home = () => {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.play().catch((error) => {
-        console.error("Error playing video:", error);
-      });
+      const playPromise = videoRef.current.play();
+      // Handle browsers/environments where play() doesn't return a Promise
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.error("Error playing video:", error);
+        });
+      }
     }
   }, []);
 
-  const renderTooltip = (props: any) => (
+  const renderTooltip = (props: TooltipProps) => (
     <Tooltip id="email-tooltip" {...props}>
       hello@chace.me
     </Tooltip>
@@ -448,7 +452,7 @@ export const Home = () => {
                     }}
                   >
                     <Carousel pause="hover" interval={null} data-bs-theme="dark">
-                      {project.images.map((image: any, imgIndex: number) => (
+                      {project.images.map((image: string, imgIndex: number) => (
                         <Carousel.Item key={imgIndex}>
                           <img
                             src={image}
@@ -533,35 +537,37 @@ export const Home = () => {
                 </div>
               </OverlayTrigger>
 
-              <div
+              <a
+                href="https://www.linkedin.com/in/chace-medeiros/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn profile"
                 style={{
-                  cursor: "pointer",
+                  display: "inline-block",
                   opacity: 0.7,
                   transition: "opacity 0.3s ease",
-                }}
-                onClick={() => {
-                  window.open("https://www.linkedin.com/in/chace-medeiros/");
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
                 onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
               >
                 <LinkedIn />
-              </div>
+              </a>
 
-              <div
+              <a
+                href="https://github.com/chacebot"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub profile"
                 style={{
-                  cursor: "pointer",
+                  display: "inline-block",
                   opacity: 0.7,
                   transition: "opacity 0.3s ease",
-                }}
-                onClick={() => {
-                  window.open("https://github.com/chacebot");
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
                 onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
               >
                 <Github />
-              </div>
+              </a>
             </div>
           </TextReveal>
         </div>
