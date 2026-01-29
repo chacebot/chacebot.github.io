@@ -1,7 +1,7 @@
-import { Routes, Route } from "react-router-dom";
-import { Home } from "./Pages/Home";
-import { PageWrapper } from "./Common/PageWrapper";
-import { NoMatch } from "./Pages/NoMatch";
+import { Routes, Route } from 'react-router-dom';
+import { Home } from './Pages/Home';
+import { PageWrapper } from './Common/PageWrapper';
+import { NoMatch } from './Pages/NoMatch';
 
 function App() {
   return (

@@ -109,6 +109,7 @@ npm run deploy
 ```
 
 This will:
+
 1. Build the production bundle
 2. Deploy to the `gh-pages` branch
 3. Make the site available at the configured homepage URL

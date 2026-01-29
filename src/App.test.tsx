@@ -7,7 +7,7 @@ test('renders homepage', () => {
   render(
     <BrowserRouter>
       <App />
-    </BrowserRouter>
+    </BrowserRouter>,
   );
   const headingElement = screen.getByText(/COMMUNITY/i);
   expect(headingElement).toBeInTheDocument();

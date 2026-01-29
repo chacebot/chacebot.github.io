@@ -1,3 +1,4 @@
+import type React from 'react';
 import { useEffect, useRef, useState } from 'react';
 
 interface BlockRevealProps {
@@ -27,7 +28,7 @@ export const BlockReveal = ({
           }, delay);
         }
       },
-      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
+      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' },
     );
 
     const currentElement = elementRef.current;
@@ -50,11 +51,14 @@ export const BlockReveal = ({
       width: '100%',
       height: '100%',
       backgroundColor: '#000000',
-      transform: isVisible 
-        ? (direction === 'left' ? 'translateX(-100%)' : 
-           direction === 'right' ? 'translateX(100%)' : 
-           direction === 'top' ? 'translateY(-100%)' : 
-           'translateY(100%)')
+      transform: isVisible
+        ? direction === 'left'
+          ? 'translateX(-100%)'
+          : direction === 'right'
+            ? 'translateX(100%)'
+            : direction === 'top'
+              ? 'translateY(-100%)'
+              : 'translateY(100%)'
         : 'translateX(0) translateY(0)',
       transition: 'transform 1.6s cubic-bezier(0.16, 1, 0.3, 1)',
       zIndex: 1,
@@ -83,9 +87,7 @@ export const BlockReveal = ({
         overflow: 'hidden',
       }}
     >
-      <div style={{ position: 'relative', zIndex: 0 }}>
-        {children}
-      </div>
+      <div style={{ position: 'relative', zIndex: 0 }}>{children}</div>
       <div style={getOverlayStyle()} />
     </div>
   );

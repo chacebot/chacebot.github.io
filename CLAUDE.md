@@ -18,6 +18,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Provide constructive feedback** that helps improve code quality while being respectful and actionable
 
 When code is presented for review, Claude should:
+
 1. Analyze the code changes comprehensively
 2. Identify any issues or areas for improvement
 3. Provide specific, actionable feedback
@@ -57,6 +58,7 @@ npm run deploy
 ## Architecture
 
 ### Tech Stack
+
 - **React 18** with **TypeScript 5**
 - **Vite** for build tooling and development server
 - **Vitest** for testing
@@ -65,19 +67,24 @@ npm run deploy
 - **React Markdown** for markdown rendering
 
 ### Project Structure
+
 - `src/Pages/` - Main page components (Home, Professional, Personal, Causes, Contact)
 - `src/Common/` - Reusable components (Header, NavBar, PageWrapper, ContentItem)
 - `src/Content/` - Content data organized by section (Professional, Personal)
 - `src/Styles/` - Global styles and CSS variables
 
 ### Data Layer
+
 Content is organized in TypeScript files within `src/Content/`:
+
 - Professional projects defined in `ProfessionalContent.ts`
 - Personal content defined in `PersonalContent.ts`
 - Each content item follows the `ContentStructure` interface
 
 ### Routing
+
 Routes are defined in `App.tsx`:
+
 - `/` - Home page
 - `/professional` - Professional projects showcase
 - `/personal` - Personal interests and activities
@@ -86,6 +93,7 @@ Routes are defined in `App.tsx`:
 - `*` - 404/NoMatch handler
 
 ### Patterns
+
 - Pages use `PageWrapper` component for consistent layout
 - Content components use `ContentItem` for standardized display
 - Images and assets are organized by content section
@@ -94,6 +102,7 @@ Routes are defined in `App.tsx`:
 ## Workflow Preferences
 
 ### Planning & Commits
+
 - **When reviewing code**: Provide feedback on whether the plan is appropriate and complete
 - **Review commit structure**: Verify that changes are minimal, focused, and logically grouped
 - **Review commit messages**: Ensure they are short, descriptive, and follow conventional commit format when applicable
@@ -104,6 +113,7 @@ Routes are defined in `App.tsx`:
 - **Review PR process**: When applicable, verify that PRs are created using GitHub CLI: `gh pr create --title "Title" --body "Description" --web`
 
 ### Code Quality
+
 - **As a reviewer, verify** that code follows React and TypeScript best practices
 - **Review and ensure** tests are created for all new code changes with every commit; no code merged without corresponding tests
 - **Check that** components are kept small and composable
@@ -112,6 +122,7 @@ Routes are defined in `App.tsx`:
 - **Review** TypeScript typing - maintain consistency and avoid `any` types
 
 ### Code Review Checklist
+
 When reviewing code written by Cursor, systematically check:
 
 - **Functionality**: Does the code work correctly? Are edge cases handled?
@@ -129,6 +140,7 @@ When reviewing code written by Cursor, systematically check:
 - **React Best Practices**: Are hooks used correctly? Is component state managed appropriately?
 
 ### UI/UX Guidelines
+
 - Ensure responsive design across device sizes (mobile-first approach)
 - Use Bootstrap utility classes where appropriate
 - Maintain visual hierarchy guiding users to important elements
@@ -137,11 +149,13 @@ When reviewing code written by Cursor, systematically check:
 - Ensure images are optimized and load efficiently
 
 ### Deployment
+
 - **Review deployment process**: Verify that deployment follows the correct process using `npm run deploy`
 - **Check routing**: Ensure all routes work correctly (including direct navigation to subroutes)
 - **Verify build output**: Confirm the build process creates necessary files including `404.html` for client-side routing
 
 ### Providing Review Feedback
+
 When providing code review feedback:
 
 - **Be specific**: Point to exact lines, functions, or files when identifying issues

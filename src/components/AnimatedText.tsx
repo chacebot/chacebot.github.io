@@ -1,3 +1,4 @@
+import type React from 'react';
 import { useEffect, useState } from 'react';
 
 interface AnimatedTextProps {
@@ -21,7 +22,6 @@ export const AnimatedText = ({
   onComplete,
   shouldStart = true,
 }: AnimatedTextProps) => {
-  
   const [displayedText, setDisplayedText] = useState('');
   const [isComplete, setIsComplete] = useState(false);
 
