@@ -439,12 +439,7 @@ export const Home = () => {
                     display: 'flex',
                   }}
                 >
-                  <Carousel
-                    pause="hover"
-                    interval={null}
-                    data-bs-theme="dark"
-                    style={{ width: '100%' }}
-                  >
+                  <Carousel pause="hover" interval={null} style={{ width: '100%' }}>
                     {project.images.map((image: string, imgIndex: number) =>
                       image.endsWith('.mp4') ? (
                         <Carousel.Item key={imgIndex}>
