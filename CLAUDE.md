@@ -1,10 +1,16 @@
-# CLAUDE.md
+# Claude Instructions for chacebot.github.io
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude when working with code in this repository.
 
-## Primary Role: Code Reviewer
+## Primary Roles
 
-**Claude's primary responsibility is to act as a code reviewer for all code written by Cursor AI in this repository.** When reviewing code:
+Claude serves two primary roles:
+1. **Development Assistant**: Writing, testing, and improving code
+2. **Code Reviewer**: Reviewing and providing feedback on code quality
+
+## Code Review Responsibilities
+
+When reviewing code:
 
 - **Thoroughly review all code changes** that Cursor has made or is proposing to make
 - **Identify potential issues** including bugs, security vulnerabilities, performance problems, and architectural concerns
@@ -148,11 +154,39 @@ When reviewing code written by Cursor, systematically check:
 - Test all routes and navigation flows
 - Ensure images are optimized and load efficiently
 
+### Workflow Preferences (Development Mode)
+
+When actively developing:
+- For non-trivial changes, propose a short plan (1-6 bullets)
+- **Commit frequently** after completing individual tasks
+- Use short, descriptive commit messages
+- Run tests and build before committing
+- Create feature branches (e.g., `feature/my-new-feature`)
+- Update README.md and BACKLOG.md when completing features
+- After completing a feature, create PR using: `gh pr create --title "Title" --body "Description" --web`
+
+### Code Quality Guidelines
+- Follow React and TypeScript best practices
+- Create tests for all new code changes
+- Keep components small and composable
+- Use functional components with hooks
+- Maintain consistent TypeScript typing; avoid `any` types
+- Ensure responsive design (mobile-first approach)
+- Use Bootstrap utility classes appropriately
+- Keep layouts clean with consistent spacing
+
 ### Deployment
 
 - **Review deployment process**: Verify that deployment follows the correct process using `npm run deploy`
 - **Check routing**: Ensure all routes work correctly (including direct navigation to subroutes)
 - **Verify build output**: Confirm the build process creates necessary files including `404.html` for client-side routing
+
+### Additional Development Guidelines
+- When editing TypeScript/React files, ensure proper indentation and formatting
+- Prefer using React's declarative patterns
+- Always verify that code changes compile and the app builds before suggesting them
+- Test all routes and navigation flows
+- Ensure images are optimized and load efficiently
 
 ### Providing Review Feedback
 

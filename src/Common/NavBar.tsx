@@ -54,6 +54,24 @@ const NavBar = () => {
     };
   }, [isMenuOpen, isMobile]);
 
+  // Expose the navbar's rendered height as a CSS variable so other sections
+  // can size themselves to fit the remaining viewport (e.g. `calc(100vh - var(--navbar-height))`)
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+
+    const updateNavbarHeightVar = () => {
+      document.documentElement.style.setProperty('--navbar-height', `${nav.offsetHeight}px`);
+    };
+
+    updateNavbarHeightVar();
+
+    const resizeObserver = new ResizeObserver(updateNavbarHeightVar);
+    resizeObserver.observe(nav);
+
+    return () => resizeObserver.disconnect();
+  }, [isMobile]);
+
   // Lock navbar height on mobile to prevent Chrome iOS expansion
   useEffect(() => {
     if (!navRef.current || !isMobile) return;

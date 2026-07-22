@@ -44,27 +44,21 @@ export const Home = () => {
       'React',
       'Node.js',
       'Python',
+      'Java',
       'C++',
       'ROS',
+      'REST',
       'OpenCV',
       'PyTorch',
       'MongoDB',
       'SQL',
       'Git',
       'GitHub',
-    ],
-    fun: [
-      'Swift',
-      'SwiftUI',
-      'SwiftData',
-      'iOS Development',
-      'Rust',
+      'Robotics',
       'Tailwind',
       'Figma',
-      '3D Printing',
-      'Welding',
-      'Robotics',
     ],
+    fun: ['Swift', 'iOS Development', '3D Printing', 'Welding'],
   };
 
   return (
@@ -439,24 +433,53 @@ export const Home = () => {
                 <div
                   style={{
                     width: '100%',
+                    maxHeight: 'calc(100vh - var(--navbar-height, 88px))',
                     borderRadius: '8px',
                     overflow: 'hidden',
+                    display: 'flex',
                   }}
                 >
-                  <Carousel pause="hover" interval={null} data-bs-theme="dark">
-                    {project.images.map((image: string, imgIndex: number) => (
-                      <Carousel.Item key={imgIndex}>
-                        <img
-                          src={image}
-                          alt={`${project.heading} ${imgIndex + 1}`}
-                          style={{
-                            width: '100%',
-                            height: 'auto',
-                            display: 'block',
-                          }}
-                        />
-                      </Carousel.Item>
-                    ))}
+                  <Carousel
+                    pause="hover"
+                    interval={null}
+                    data-bs-theme="dark"
+                    style={{ width: '100%' }}
+                  >
+                    {project.images.map((image: string, imgIndex: number) =>
+                      image.endsWith('.mp4') ? (
+                        <Carousel.Item key={imgIndex}>
+                          <video
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            style={{
+                              width: '100%',
+                              maxHeight: 'calc(100vh - var(--navbar-height, 88px))',
+                              objectFit: 'contain',
+                              display: 'block',
+                              margin: '0 auto',
+                            }}
+                          >
+                            <source src={image} type="video/mp4" />
+                          </video>
+                        </Carousel.Item>
+                      ) : (
+                        <Carousel.Item key={imgIndex}>
+                          <img
+                            src={image}
+                            alt={`${project.heading} ${imgIndex + 1}`}
+                            style={{
+                              width: '100%',
+                              maxHeight: 'calc(100vh - var(--navbar-height, 88px))',
+                              objectFit: 'contain',
+                              display: 'block',
+                              margin: '0 auto',
+                            }}
+                          />
+                        </Carousel.Item>
+                      )
+                    )}
                   </Carousel>
                 </div>
               )}

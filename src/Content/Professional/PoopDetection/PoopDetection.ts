@@ -8,6 +8,6 @@ import poop6 from './poop6.jpg';
 
 export const PoopDetection: ContentEntry = {
   heading: 'Dog Event Detection',
-  body: 'I created a system that detects where my dog "Cash" has a poop event in my back yard and calculates the position relative to the camera station. I achieved this using machine learning on the edge with Pytorch to fine tune a SSD mobile net library and run inference detection in real time using a Nvidia Jetson Nano and a Intel Real Sense depth camera. Created a web app to view event data using React and Python.',
+  body: 'I designed and built an end-to-end edge computer vision system to detect and localize pet waste events in my backyard, using my dog "Cash" as the test subject. I fine-tuned a PyTorch SSD MobileNet model for real-time object detection on an Nvidia Jetson Nano and fused its output with depth data from an Intel RealSense camera to compute each event\'s position relative to the camera station. I also built a full-stack web application in React and Python for reviewing and visualizing detection history.',
   images: [poop1, poop2, poop3, poop4, poop5, poop6],
 };
